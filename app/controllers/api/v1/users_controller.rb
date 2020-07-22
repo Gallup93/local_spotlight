@@ -29,7 +29,6 @@ class Api::V1::UsersController < ApplicationController
     #     access_token: auth_params["access_token"],
     #     refresh_token: auth_params["refresh_token"]
     #   )
-    # end
-   
+    # end 
   end
 end
