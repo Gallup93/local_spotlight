@@ -1,0 +1,21 @@
+
+<section class="user-info">
+  <h2>Hello, <%= current_user.username %></h2>
+  <ul>
+    <li>Your current zipcode: <%= current_user.zipcode %></li>
+  </ul>
+</section>
+
+<section class="favorite-artists">
+  <h2>Favroties:</h2>
+  <ul>
+    <% if @favorites == [] %>
+      <li>No Favorite Artists... yet</li>
+    <% else %>
+      <% @favorites.each do |favorite| %>
+      <% name = Artist.find(favorite.artist_id).name %>
+        <li> <%= link_to "#{name}", "/artists/#{favorite.artist_id}"%> </li>
+      <% end %>
+    <% end %>
+  </ul>
+</section>
