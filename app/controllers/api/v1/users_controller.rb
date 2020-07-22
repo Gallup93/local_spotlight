@@ -15,21 +15,21 @@ class Api::V1::UsersController < ApplicationController
     }
     user_response = Faraday.get("https://api.spotify.com/v1/me", nil, header)
     user_params = JSON.parse(user_response.body)
-    binding.pry
+   
     @user = User.find_or_create_by(
       username: user_params["display_name"],
       href: user_params["external_urls"]["spotify"],
       email: user_params["email"]
     )
-
-    if @user.access_token_expired?
-      @user.refresh_access_token
-    else
-      @user.update(
-        access_token: auth_params["access_token"],
-        refresh_token: auth_params["refresh_token"]
-      )
-    end
-    binding.pry
+    # The code below will need to be completed to address the access token expiring after 1 hour
+    # if @user.access_token_expired?
+    #   @user.refresh_access_token
+    # else
+    #   @user.update(
+    #     access_token: auth_params["access_token"],
+    #     refresh_token: auth_params["refresh_token"]
+    #   )
+    # end
+   
   end
 end
