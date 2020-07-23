@@ -21,6 +21,8 @@ class Api::V1::UsersController < ApplicationController
       href: user_params["external_urls"]["spotify"],
       email: user_params["email"]
     )
+    session[:user_id] = @user.id 
+    redirect_to '/api/v1/dashboard' 
     # The code below will need to be completed to address the access token expiring after 1 hour
     # if @user.access_token_expired?
     #   @user.refresh_access_token
@@ -30,5 +32,8 @@ class Api::V1::UsersController < ApplicationController
     #     refresh_token: auth_params["refresh_token"]
     #   )
     # end 
+  end
+
+  def show    
   end
 end
