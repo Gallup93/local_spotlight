@@ -1,5 +1,4 @@
 class Api::V1::AuthController < ApplicationController
-
   def spotify_request
     url = "https://accounts.spotify.com/authorize"
     query_params = {
