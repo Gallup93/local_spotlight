@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get '/', to: 'welcome#index'
 
-  resources :artists, only: [ :show, :new, :create ]
+  resources :artists, only: [ :show, :new, :create, :index ]
   get '/logout', to: 'sessions#destroy'
 
   get '/favorites', to: 'favorites#index'
