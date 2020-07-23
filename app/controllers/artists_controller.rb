@@ -10,11 +10,20 @@ class ArtistsController < ApplicationController
   def create
     artist = Artist.create(artist_params)   
     artist.update(genre: genre_params)
-    redirect_to "/artists/#{artist.id}"
+
+    redirect_to artist_path(artist.id)
+  end
+
+  def index
+    @artists = Artist.all
+  end
+
+  def show
+    @artist = Artist.find(params[:id])
   end
 
   private
-  def  artist_params
+  def artist_params
     params.permit(:name, :spotify_id, :zipcode)
   end
 

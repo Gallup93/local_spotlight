@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 2020_07_22_034849) do
     t.string "username"
     t.string "email"
     t.string "zipcode"
+    t.string "token"
+    t.string "refresh_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "href"
