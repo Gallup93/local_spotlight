@@ -21,6 +21,8 @@ class Api::V1::UsersController < ApplicationController
       href: user_params["external_urls"]["spotify"],
       email: user_params["email"]
     )
+
+    session[:user_id] = @user.id
     # The code below will need to be completed to address the access token expiring after 1 hour
     # if @user.access_token_expired?
     #   @user.refresh_access_token
@@ -35,4 +37,5 @@ class Api::V1::UsersController < ApplicationController
   def show
     @favorites = UserArtist.all.where(user_id: current_user.id)
   end
+
 end
