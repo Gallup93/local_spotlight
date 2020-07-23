@@ -9,6 +9,7 @@ class ArtistsController < ApplicationController
   end
 
   def create
+    binding.pry
     artist = Artist.create(artist_params)   
     artist.update(genre: genre_params)
     redirect_to "/artists/#{artist.id}"
