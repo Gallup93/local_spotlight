@@ -12,6 +12,14 @@ RSpec.describe 'Artist show page', type: :feature do
     
     it 'Artist information is visible on the artist show page' do 
       visit "/artist/#{@artist_1.id}"  
+
+      within ".top-tracks" do
+        "#{@artist.name} Top Tracks"
+      end 
+
+      within ".albums" do 
+        "albums"
+      end 
     
     end 
 
