@@ -13,9 +13,11 @@
       <li>No Favorite Artists... yet</li>
     <% else %>
       <% @favorites.each do |favorite| %>
-      <% name = Artist.find(favorite.artist_id).name %>
-        <li> <%= link_to "#{name}", "/artists/#{favorite.artist_id}"%> </li>
+      <div class= <%= "artist-#{favorite.artist_id}"%> >
+        <% name = Artist.find(favorite.artist_id).name %>
+          <li> <%= link_to "#{name}", "/artists/#{favorite.artist_id}"%> </li>
+        <% end %>
       <% end %>
-    <% end %>
+      </div>
   </ul>
 </section>
