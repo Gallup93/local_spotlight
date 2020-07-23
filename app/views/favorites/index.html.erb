@@ -1,0 +1,14 @@
+<div class="favorite-bands">
+  <%if @favorite_artists.length >= 1%>
+    <%@favorite_artists.each do |favorite|%>
+      <ul class=<%="artist-#{favorite.artist_id}"%>>
+        <li><%=favorite.artist.name%> </li>
+        <li><%=favorite.artist.city%> </li>
+        <li><%=favorite.artist.state%> </li>
+        <li><%=favorite.artist.zipcode%> </li>
+      </ul>
+    <%end%>
+  <%else%>
+    <h3>No Favorites... Yet </h3>
+  <%end%>
+</div>
