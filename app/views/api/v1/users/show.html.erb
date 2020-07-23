@@ -14,7 +14,7 @@
     <% else %>
       <% @favorites.each do |favorite| %>
       <div class= <%= "artist-#{favorite.artist_id}"%> >
-        <% name = Artist.find(favorite.artist_id).name %>
+        <% name = favorite.get_name_by_id(favorite.artist_id) %>
           <li> <%= link_to "#{name}", "/artists/#{favorite.artist_id}"%> </li>
         <% end %>
       <% end %>
