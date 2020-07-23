@@ -7,7 +7,7 @@ class Api::V1::UsersController < ApplicationController
       client_id: ENV['SPOTIFY_CLIENT_ID'],
       client_secret: ENV['SPOTIFY_CLIENT_SECRET']
     }
-    
+
     auth_response = Faraday.post('https://accounts.spotify.com/api/token', body)
     auth_params = JSON.parse(auth_response.body)
     header = {
@@ -15,7 +15,7 @@ class Api::V1::UsersController < ApplicationController
     }
     user_response = Faraday.get("https://api.spotify.com/v1/me", nil, header)
     user_params = JSON.parse(user_response.body)
-   
+
     @user = User.find_or_create_by(
       username: user_params["display_name"],
       href: user_params["external_urls"]["spotify"],
@@ -31,7 +31,10 @@ class Api::V1::UsersController < ApplicationController
     #     access_token: auth_params["access_token"],
     #     refresh_token: auth_params["refresh_token"]
     #   )
-    # end 
+    # end
   end
 
+  def show
+    @favorites = UserArtist.all.where(user_id: current_user.id)
+  end
 end
