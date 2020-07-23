@@ -1,4 +1,4 @@
-<h1> New Artist Submition Form</h1>
+<h1> New Artist Submission Form</h1>
 
 <%= form_tag "/artists", method: :post do %>
 <%= label_tag "Name" %><br>
@@ -10,11 +10,11 @@
 Genre:<br>
 <%= label_tag :rock, ("Rock") %>
 <%= check_box_tag :rock %>
-<%= label_tag :genre, ("Country") %>
-<%= check_box_tag :genre %>
-<%= label_tag :genre, ("Pop") %>
-<%= check_box_tag :genre %>
-<%= label_tag :genre, ("Jazz") %>
-<%= check_box_tag :genre %><br>
+<%= label_tag :country, ("Country") %>
+<%= check_box_tag :country %>
+<%= label_tag :pop, ("Pop") %>
+<%= check_box_tag :pop %>
+<%= label_tag :jazz, ("Jazz") %>
+<%= check_box_tag :jazz %><br>
 <%= submit_tag "Add Artist" %><br>
 <% end  %>
