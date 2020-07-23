@@ -10,6 +10,17 @@
   </head>
 
   <body>
+    <nav class="topnav">
+      <% if current_user.nil? %>
+        <%=link_to "Login with Spotify", "/api/v1/login"%>
+      
+      <% elsif !current_user.nil? %>
+        <%= link_to "Favorites", "/favorites"%>
+        <%= link_to "Add New Artist", "/artists/new" %>
+        <%= link_to "Logout", "/logout"%>
+        <%= link_to "Browse", "/artist"%>
+      <% end %>
+    </nav>
     <%= yield %>
   </body>
 </html>
