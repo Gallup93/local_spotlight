@@ -10,7 +10,7 @@ class ArtistsController < ApplicationController
   end
 
   def index
-    @artists = Artist.all
+    @artists = current_user.find_closest_artists
   end
 
   def show
