@@ -18,6 +18,7 @@ class Api::V1::UsersController < ApplicationController
     user_params = JSON.parse(user_response.body)
 
     @user = return_user_by_username(user_params["display_name"])
+
     if @user == nil
       @user = User.create(
         username: user_params["display_name"],
@@ -29,6 +30,7 @@ class Api::V1::UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to "/api/v1/preferences"
     else
+      @user.update_attributes(token: auth_params["access_token"], refresh_token: auth_params["refresh_token"])
       session[:user_id] = @user.id
       redirect_to '/api/v1/dashboard'
     end
