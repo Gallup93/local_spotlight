@@ -1,1 +1,24 @@
-Artist Show
+<div class="artist-name">
+    <%=@artist.name%>
+</div>
+<br>
+<div class="description">
+    <% if @artist.description.nil?%>
+        <p>This artist does not have a description</p>
+    <%else%>
+        <%=@artist.description%>
+    <%end%>
+</div>
+<br><br>
+
+<div class="top-tracks">
+<h4>Top Tracks</h4>
+    <iframe src=<%="https://open.spotify.com/embed/artist/#{@artist.spotify_id}"%> width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+</div>
+
+<div class="albums">
+    <h3>Albums</h3>
+    <%@artist_albums[:items].each do |album|%>
+          <iframe src=<%="https://open.spotify.com/embed/album/#{album[:id]}"%> width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    <%end%>
+</div>
