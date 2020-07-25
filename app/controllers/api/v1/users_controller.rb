@@ -41,5 +41,9 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update
+    if params["zipcode"]
+      current_user.update_attribute(:zipcode, params["zipcode"])
+      redirect_to "/api/v1/dashboard"
+    end
   end
 end

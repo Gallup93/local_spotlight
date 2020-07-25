@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      patch "/users", to: 'users#update'
       get '/login', to: 'auth#spotify_request'
       get '/user', to: 'users#create'
       get '/preferences', to: 'users#update'
