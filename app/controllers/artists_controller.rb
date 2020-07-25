@@ -27,12 +27,8 @@ class ArtistsController < ApplicationController
     response = conn.get("/v1/artists/#{@artist.spotify_id}/albums")
     
     @artist_albums = JSON.parse(response.body, symbolize_names: true)
-    # fixture = File.read("spec/fixtures/artist_albums.json")
-    # @artist_albums = JSON.parse(fixture, symbolize_names: true)
    
   end
-
-    # @artist_albums[:items].first[:images].first[:url]
 
   private
   def artist_params
