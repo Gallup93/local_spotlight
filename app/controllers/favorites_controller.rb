@@ -9,4 +9,13 @@ class FavoritesController < ApplicationController
       redirect_to request.referrer
     end
   end
+
+  def destroy
+    favorite = UserArtist.find(params[:id])
+    name = Artist.find(favorite.artist_id).name
+    current_user.user_artists.delete(favorite.id)
+    favorite.delete
+    flash[:success] = "#{name} has been removed from your favorites"
+    redirect_to "/favorites"
+  end
 end
