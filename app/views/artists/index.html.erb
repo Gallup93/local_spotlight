@@ -1,3 +1,5 @@
+<%=flash[:success] %>
+
 <h1>Zip:<%= current_user.zipcode %></h1>
 <%= form_tag "/zip", method: :patch do %>
   <%= label_tag "Zipcode" %><br>
@@ -10,6 +12,8 @@
   <% display_artist = find_artist_by_id(params[:new_artist].to_i) %>
 <% end %>
 <h1 class="artist-header"><%= link_to display_artist.name, artist_path(display_artist.id) %></h1>
+
+<h3 class="fav-link"> <%= link_to "FAV", "/favorites/#{display_artist.id}/new" %>  </h3>  </br>
 <iframe src=<%="https://open.spotify.com/embed/artist/#{display_artist.spotify_id}"%> width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 </br>
 <% @artists.each do |artist| %>
