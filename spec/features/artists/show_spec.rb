@@ -8,10 +8,23 @@ RSpec.describe 'Artist show page', type: :feature do
         @artist_4 = Artist.create(name: "Oko Tygra", zipcode: "80126", spotify_id: "0K7C1TRrshf9PGeOmnwtDe", city: "Denver", state: "CO", genre: ["electronic"])
         @artist_5 = Artist.create(name: "Nightmare Blue", zipcode: "80126", spotify_id: "e", city: "Denver", state: "CO", genre: ["rock", "garage-rock"])
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
+
+        artist_albums = File.read('spec/fixtures/artist_albums.json')
+        stub_request(:get, "https://api.spotify.com/v1/artists/1Apw9xiab11PyZLo6YeUoJ/albums").
+        with(
+          headers: {
+        'Accept'=>'*/*',
+        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+        'Authorization'=>'Bearer',
+        'User-Agent'=>'Faraday v1.0.1'
+          }).
+        to_return(status: 200, body: artist_albums, headers: {})
+        
     end 
     
     it 'Artist information is visible on the artist show page' do 
-      visit "/artists/#{@artist_1.id}" 
+      visit "/artists/#{@artist_1.id}"
+     
       within ".artist-name" do 
         expect(page).to have_content(@artist_1.name)
       end 
