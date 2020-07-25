@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   get '/favorites', to: 'favorites#index'
-
+  get 'favorites/:id/new', to: 'favorites#new'
   namespace :api do
     namespace :v1 do
       patch "/users", to: 'users#update'
