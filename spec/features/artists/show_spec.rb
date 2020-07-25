@@ -15,17 +15,16 @@ RSpec.describe 'Artist show page', type: :feature do
       within ".artist-name" do 
         expect(page).to have_content(@artist_1.name)
       end 
-
+      
       within ".description" do 
         expect(page).to have_content("A very cool band")
       end 
 
-      within ".top-tracks" do
-        "Top Tracks"
-      end 
-
-      within ".albums" do 
-        "albums"
+      
+      within ".links" do 
+        expect(page).to have_content("Earl Grey")
+        expect(page).to have_content("The Eternal")
+        expect(page).to have_content("Mudhouse")
       end 
     
     end 
