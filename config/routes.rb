@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get '/favorites', to: 'favorites#index'
 
+
+
   namespace :api do
     namespace :v1 do
       patch "/users", to: 'users#update'

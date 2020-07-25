@@ -1,1 +1,40 @@
-Artist Show
+<div class="artist-name">
+  <h3 align="center">Name: <%=@artist.name%></h3>
+</div>
+
+<br>
+
+<div class="description", align="center">
+    <h4 align="center">Description:</h4>
+    <% if @artist.description.nil?%>
+        <p>This artist does not have a description</p>
+    <%else%>
+        <%=@artist.description%>
+    <%end%>
+</div>
+
+<br><br>
+
+<section class="player", align="center">
+    <%if params[:new_album] %>
+        <ul>
+          <iframe src=<%="https://open.spotify.com/embed/album/#{params[:new_album]}"%> width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe><br>
+          <%=button_to "Top Tracks", artist_path(@artist.id), method: :get%>
+        </ul>   
+
+    <%else%>
+        <iframe src=<%="https://open.spotify.com/embed/artist/#{@artist.spotify_id}"%> width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    <%end%>
+</section>
+
+<br><br>
+
+<section class="links", align="center">
+  <h3>Pictures</h3>
+    <ul>
+      <%@artist_albums[:items].each do |album|%>
+        <li><%=album[:name]%></li>
+        <%=link_to image_tag(album[:images].first[:url]), artist_path(@artist.id, :new_album => album[:id])%>
+      <%end%>
+    </ul>
+</section>
