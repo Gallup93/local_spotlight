@@ -31,7 +31,7 @@ RSpec.describe "Users can add a favorite" do
       expect(page).to have_content(@artist1.name)
       expect(page).to have_content(@artist3.name)
     end
-    it "wont display 'FAV' link if artist is already facortied" do
+    it "wont display 'FAV' link if artist is already favorited" do
       @user1 = User.create(username: "Music McMusic", email: "music@hotmail.com", zipcode: "80210" )
       @artist1 = Artist.create(name: "Colfax Speed Queen", zipcode: "80126", spotify_id: "3p9nYbFprckRkRxuCFVQcx", city: "Denver", state: "CO", genre: ["garage", "punk"])
       @artist2 = Artist.create(name: "Joel Ansett", zipcode: "80126", spotify_id: "49IjdVEbQcukWy36sdRMzl", city: "Denver", state: "CO", genre: ["indie", "pop"])
