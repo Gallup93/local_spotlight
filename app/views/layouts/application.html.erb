@@ -4,21 +4,24 @@
     <title>LocalSpotlight</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
-
   <body>
     <nav class="topnav">
       <% if current_user.nil? %>
         <%=link_to "Login with Spotify", "/api/v1/login"%>
-      
       <% elsif !current_user.nil? %>
+        <%= link_to "Dashboard", "/api/v1/dashboard"%>
+        <%= link_to "Browse", "/artists"%>
         <%= link_to "Favorites", "/favorites"%>
         <%= link_to "Add New Artist", "/artists/new" %>
+        <%= link_to "Preferences", "/api/v1/preferences" %>
         <%= link_to "Logout", "/logout"%>
+<<<<<<< HEAD
         <%= link_to "Browse", "/artists"%>
+=======
+>>>>>>> 522db76efeb559bd5fa286de3da330007020aa3b
       <% end %>
     </nav>
     <%= yield %>

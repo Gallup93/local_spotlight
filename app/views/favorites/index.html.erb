@@ -1,3 +1,4 @@
+<%=flash[:success] %>
 <div class="favorite-bands">
   <%if @favorite_artists.length >= 1%>
     <%@favorite_artists.each do |favorite|%>
@@ -6,6 +7,7 @@
         <li><%=favorite.artist.city%> </li>
         <li><%=favorite.artist.state%> </li>
         <li><%=favorite.artist.zipcode%> </li>
+        <h3 class="delete-fav-link"> <%= link_to "remove favorite", "/favorites/#{favorite.id}/delete" %>  </h3>  </br>
       </ul>
     <%end%>
   <%else%>
