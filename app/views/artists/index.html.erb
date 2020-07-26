@@ -1,12 +1,13 @@
 <%=flash[:success] %>
 
-<h1>Zip:<%= current_user.zipcode %></h1>
-<%= form_tag "/zip", method: :patch do %>
-  <%= label_tag "Zipcode" %><br>
-  <%= text_field_tag :zipcode %><br>
-  <%= submit_tag "Update Zipcode" %><br>
-<% end %>
-
+<h1>Currently Browsing Zipcode: <%= session[:temp_zip] %></h1>
+<section class="update-temp-zip">
+  <%= form_tag "/zipcode", method: :patch do %>
+    <%= label_tag "Need a change?" %><br>
+    <%= text_field_tag :zipcode, "Enter a zip" %><br>
+    <%= submit_tag "Explore" %><br>
+  <% end %>
+</section>
 <% display_artist = @artists.first %>
 <% if params[:new_artist] %>
   <% display_artist = find_artist_by_id(params[:new_artist].to_i) %>
