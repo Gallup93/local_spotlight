@@ -12,7 +12,11 @@
         <%=@artist.description%>
     <%end%>
 </div>
-<h3 class="fav-link"> <%= link_to "FAV", "/favorites/#{artist.id}/new" %>  </h3>  </br>
+
+<% if !current_user.favorited?(current_user.id, @artist.id) %>
+  <h3 class="fav-link"> <%= link_to "FAV", "/favorites/#{@artist.id}/new" %>  </h3>  </br>
+<% end %>
+
 <br><br>
 
 <section class="player", align="center">
