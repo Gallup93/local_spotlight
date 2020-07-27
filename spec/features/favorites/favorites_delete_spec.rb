@@ -9,6 +9,16 @@ RSpec.describe "Users can delete a favorite" do
       @artist3 = Artist.create(name: "YaSi", zipcode: "80126", spotify_id: "7emRqFqumIU39rRPvK3lbE", city: "Denver", state: "CO", genre: ["pop"])
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
 
+      zipcode_stub = File.read('spec/fixtures/zipcodes/80210_radius_of_15.json')
+      stub_request(:get, "http://localhost:4567/zipradius?radius=15&zip=80210").
+         with(
+           headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent'=>'Faraday v1.0.1'
+           }).
+         to_return(status: 200, body: zipcode_stub, headers: {})
+         
       visit "/artists"
 
       within ".fav-link" do
