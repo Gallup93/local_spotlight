@@ -1,3 +1,4 @@
+
 <div class="artist-name">
   <h3 align="center">Name: <%=@artist.name%></h3>
 </div>
@@ -12,6 +13,10 @@
         <%=@artist.description%>
     <%end%>
 </div>
+
+<% if !current_user.favorited?(current_user.id, @artist.id) %>
+  <h3 class="fav-link"> <%= link_to "FAV", "/favorites/#{@artist.id}/new" %>  </h3>  </br>
+<% end %>
 
 <br><br>
 
@@ -29,12 +34,16 @@
 
 <br><br>
 
-<section class="links", align="center">
-  <h3>Pictures</h3>
-    <ul>
+
+  <section class="links", align="center">
+  <h1>Albums</h1>
+  <div class="scroll_bar">
+    <ul style="list-style-type:none;">
       <%@artist_albums[:items].each do |album|%>
-        <li><%=album[:name]%></li>
-        <%=link_to image_tag(album[:images].first[:url]), artist_path(@artist.id, :new_album => album[:id])%>
+        <h4><li><%=album[:name]%></li><h4>
+        <%=link_to image_tag(album[:images].first[:url], size: "200x200"), artist_path(@artist.id, :new_album => album[:id])%>
       <%end%>
     </ul>
+  </div>
 </section>
+      

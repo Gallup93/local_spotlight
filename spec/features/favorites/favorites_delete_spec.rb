@@ -42,7 +42,7 @@ RSpec.describe "Users can delete a favorite" do
       expect(page).to have_content(@artist3.name)
 
       within ".artist-#{@artist1.id}" do
-        click_link "remove favorite"
+        click_on "Remove Favorite"
       end
 
       expect(current_path).to eq("/favorites")
