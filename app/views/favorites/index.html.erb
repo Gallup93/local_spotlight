@@ -7,7 +7,7 @@
         <li><%=favorite.artist.city%> </li>
         <li><%=favorite.artist.state%> </li>
         <li><%=favorite.artist.zipcode%> </li>
-        <li class="delete-fav-link"> <%= link_to "remove favorite", "/favorites/#{favorite.id}/delete" %>  </li>  </br>
+        <li class="delete-fav-link"> <%= button_to "Remove Favorite", "/favorites/#{favorite.id}/delete", method: :get %>  </li>  </br>
       </ul>
     <%end%>
   <%else%>

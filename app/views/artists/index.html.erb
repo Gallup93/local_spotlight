@@ -1,11 +1,13 @@
 <%=flash[:success] %>
 
-<h1>Zip:<%= current_user.zipcode %></h1>
-<%= form_tag "/zip", method: :patch do %>
-  <%= label_tag "Zipcode" %><br>
-  <%= text_field_tag :zipcode %><br>
-  <%= submit_tag "Update Zipcode" %><br>
-<% end %>
+<zip_code align="center">
+  <h1>Zip:<%= current_user.zipcode %></h1>
+  <%= form_tag "/zip", method: :patch do %>
+    <%= label_tag "Zipcode" %><br>
+    <%= text_field_tag :zipcode %><br>
+    <%= submit_tag "Update Zipcode" %><br>
+  <% end %>
+</zip_code>
 
 <% display_artist = @artists.first %>
 <% if params[:new_artist] %>
@@ -17,10 +19,13 @@
   <h3 class="fav-link"> <%= link_to "FAV", "/favorites/#{display_artist.id}/new" %>  </h3>  </br>
 <% end %>
 
-<iframe src=<%="https://open.spotify.com/embed/artist/#{display_artist.spotify_id}"%> width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+<section align="center">
+  <iframe  src=<%="https://open.spotify.com/embed/artist/#{display_artist.spotify_id}"%> width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+</section>
 </br>
+
 <% @artists.each do |artist| %>
-  <section id=<%="artist-#{artist.id}"%>>
+  <section align="center" id=<%="artist-#{artist.id}"%>>
     <%= link_to artist.name, artists_path(:new_artist => artist.id) %></br>
   </section>
 <% end %>
