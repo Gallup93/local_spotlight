@@ -44,4 +44,5 @@ RSpec.describe 'user favorites page', type: :feature do
         end 
 
     end 
+
 end
