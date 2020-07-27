@@ -50,5 +50,32 @@ RSpec.describe "Users can add a favorite" do
       click_link "#{@artist3.name}"
       expect(page).to have_link("FAV")
     end
+
+    it "user can add artist to favorite from show page" do 
+        artist_albums = File.read('spec/fixtures/artist_albums.json')
+        stub_request(:get, "https://api.spotify.com/v1/artists/3p9nYbFprckRkRxuCFVQcx/albums").
+         with(
+           headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'Authorization'=>'Bearer',
+          'User-Agent'=>'Faraday v1.0.1'
+           }).
+         to_return(status: 200, body: artist_albums, headers: {})
+
+      @user1 = User.create(username: "Music McMusic", email: "music@hotmail.com", zipcode: "80210" )
+      @artist1 = Artist.create(name: "Colfax Speed Queen", zipcode: "80126", spotify_id: "3p9nYbFprckRkRxuCFVQcx", city: "Denver", state: "CO", genre: ["garage", "punk"])
+      @artist2 = Artist.create(name: "Joel Ansett", zipcode: "80126", spotify_id: "49IjdVEbQcukWy36sdRMzl", city: "Denver", state: "CO", genre: ["indie", "pop"])
+      @artist3 = Artist.create(name: "YaSi", zipcode: "80126", spotify_id: "7emRqFqumIU39rRPvK3lbE", city: "Denver", state: "CO", genre: ["pop"])
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
+
+      visit "/artists" 
+      within ".artist-header" do 
+        click_on @artist1.name
+      end 
+      click_on "FAV"
+      visit "/favorites"
+      expect(page).to have_content(@artist1.name)
+    end 
   end
 end
