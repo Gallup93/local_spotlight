@@ -10,9 +10,8 @@ class ApplicationController < ActionController::Base
     z.each do |zip|
       acc << Artist.where(zipcode: zip)
     end
-    acc2 = acc.flatten.uniq
+    acc2 = acc.flatten
     acc2
-   
   end
 
   def current_user
