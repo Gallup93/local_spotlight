@@ -27,13 +27,13 @@ class Api::V1::UsersController < ApplicationController
         token: auth_params["access_token"],
         refresh_token: auth_params["refresh_token"]
       )
-      session[:user_id] = @user.id
       redirect_to "/api/v1/preferences"
     else
       @user.update_attributes(token: auth_params["access_token"], refresh_token: auth_params["refresh_token"])
-      session[:user_id] = @user.id
       redirect_to '/api/v1/dashboard'
     end
+    session[:user_id] = @user.id
+    session[:temp_zip] = @user.zipcode
   end
 
   def show
@@ -43,6 +43,7 @@ class Api::V1::UsersController < ApplicationController
   def update
     if params["zipcode"]
       current_user.update_attribute(:zipcode, params["zipcode"])
+      session[:temp_zip] = current_user.zipcode
       redirect_to "/api/v1/dashboard"
     end
   end

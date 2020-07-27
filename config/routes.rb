@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :artists, only: [ :show, :new, :create, :index ]
   get '/logout', to: 'sessions#destroy'
+  patch '/zipcode', to: 'sessions#update'
 
   get 'favorites/:id/delete', to: 'favorites#destroy'
 
