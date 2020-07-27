@@ -9,43 +9,43 @@ RSpec.describe "As a registered user, when I visit the artists index page" do
     @artist4 = Artist.create(name: "Nightmare Blue", zipcode: "80126", spotify_id: "55YvlSWn4tljj2aEP086Cm", city: "Denver", state: "CO", genre: ["rock", "garage-rock"])
     @artist5 = Artist.create(name: "Vic N' the Narwhals", zipcode: "61109", spotify_id: "0562KfT4fpu6sF69JykFDI", city: "Denver", state: "CO", genre: ["latin", "psychedelic"])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
-    allow_any_instance_of(User).to receive(:find_closest_artists).and_return([@artist1, @artist2, @artist3, @artist4])
+    #allow_any_instance_of(ApplicationController).to receive(:artists_nearby).and_return([@artist1, @artist2, @artist3, @artist4])
   end
-  it "then I see all of the artists in the database" do
+  it "then I see all of the artists in the database" do  
+    zipcode_stub = File.read('spec/fixtures/zipcodes/61109_radius_of_15.json')
+    acc = stub_request(:get, "http://localhost:4567/zipradius?radius=15&zip=61109").
+    with(
+      headers: {
+        'Accept'=>'*/*',
+        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+        'User-Agent'=>'Faraday v1.0.1'
+        }).
+        to_return(status: 200, body: zipcode_stub, headers: {})
+      
     visit '/artists'
-
+  
     within '.artist-header' do
-      expect(page).to have_content(@artist1.name)
+      expect(page).to have_content(@artist5.name)
     end
 
-    within "#artist-#{@artist1.id}" do
-      expect(page).to have_link(@artist1.name)
-    end
-
-    within "#artist-#{@artist2.id}" do
-      expect(page).to have_link(@artist2.name)
-    end
-
-    within "#artist-#{@artist3.id}" do
-      expect(page).to have_link(@artist3.name)
-    end
-
-    within "#artist-#{@artist4.id}" do
-      expect(page).to have_link(@artist4.name)
-      click_link(@artist4.name)
-    end
-
-    expect(current_path).to eq("/artists")
-
-    within '.artist-header' do
-      expect(page).to have_content(@artist4.name)
-    end
+    expect(page).to_not have_link(@artist1.name)  
+    expect(page).to_not have_link(@artist2.name)   
+    expect(page).to_not have_link(@artist3.name)  
+    expect(page).to_not have_link(@artist4.name)
+ 
   end
   it "I can provide a zipcode to browse artists in new areas" do
-
+    zipcode_stub = File.read('spec/fixtures/zipcodes/80126_radius_of_15.json')
+    stub_request(:get, "http://localhost:4567/zipradius?radius=15&zip=61109").
+      with(
+        headers: {
+      'Accept'=>'*/*',
+      'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+      'User-Agent'=>'Faraday v1.0.1'
+        }).
+      to_return(status: 200, body: zipcode_stub, headers: {})
     visit '/artists'
 
-    #since test user wont go through proper login, no zip will appear
     expect(page).to have_content "Currently Browsing Zipcode:"
 
     within ".update-temp-zip" do

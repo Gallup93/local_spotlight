@@ -1,9 +1,5 @@
 class ArtistsController < ApplicationController
 
-  # def show
-  #   @artist = Artist.find(params[:id])
-  #   binding.pry
-  # end 
 
   def new
   end
@@ -16,7 +12,9 @@ class ArtistsController < ApplicationController
   end
 
   def index
-    @artists = current_user.find_closest_artists
+    zipcodes = current_user.find_zipcodes(current_user.zipcode)
+  
+    @artists = artists_nearby(zipcodes)
   end
 
   def show

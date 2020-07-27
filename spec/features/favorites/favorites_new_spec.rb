@@ -8,7 +8,16 @@ RSpec.describe "Users can add a favorite" do
       @artist2 = Artist.create(name: "Joel Ansett", zipcode: "80126", spotify_id: "49IjdVEbQcukWy36sdRMzl", city: "Denver", state: "CO", genre: ["indie", "pop"])
       @artist3 = Artist.create(name: "YaSi", zipcode: "80126", spotify_id: "7emRqFqumIU39rRPvK3lbE", city: "Denver", state: "CO", genre: ["pop"])
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
-
+      
+      zipcode_stub = File.read('spec/fixtures/zipcodes/80126_radius_of_15.json')
+      stub_request(:get, "http://localhost:4567/zipradius?radius=15&zip=80210").
+         with(
+           headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent'=>'Faraday v1.0.1'
+           }).
+         to_return(status: 200, body: zipcode_stub, headers: {})
       visit "/artists"
 
       within ".fav-link" do
@@ -31,13 +40,34 @@ RSpec.describe "Users can add a favorite" do
       expect(page).to have_content(@artist1.name)
       expect(page).to have_content(@artist3.name)
     end
+
     it "wont display 'FAV' link if artist is already facortied" do
       @user1 = User.create(username: "Music McMusic", email: "music@hotmail.com", zipcode: "80210" )
       @artist1 = Artist.create(name: "Colfax Speed Queen", zipcode: "80126", spotify_id: "3p9nYbFprckRkRxuCFVQcx", city: "Denver", state: "CO", genre: ["garage", "punk"])
       @artist2 = Artist.create(name: "Joel Ansett", zipcode: "80126", spotify_id: "49IjdVEbQcukWy36sdRMzl", city: "Denver", state: "CO", genre: ["indie", "pop"])
       @artist3 = Artist.create(name: "YaSi", zipcode: "80126", spotify_id: "7emRqFqumIU39rRPvK3lbE", city: "Denver", state: "CO", genre: ["pop"])
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
+      
+      zipcode_stub = File.read('spec/fixtures/zipcodes/80126_radius_of_15.json')
+      stub_request(:get, "http://localhost:4567/zipradius?radius=15&zip=80210").
+         with(
+           headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent'=>'Faraday v1.0.1'
+           }).
+         to_return(status: 200, body: zipcode_stub, headers: {})
 
+       album_stub = File.read('spec/fixtures/artist_albums.json')
+       stub_request(:get, "https://api.spotify.com/v1/artists/3p9nYbFprckRkRxuCFVQcx/albums").
+         with(
+           headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'Authorization'=>'Bearer',
+          'User-Agent'=>'Faraday v1.0.1'
+           }).
+        to_return(status: 200, body: album_stub, headers: {})
       visit "/artists"
 
       within ".fav-link" do
@@ -68,7 +98,15 @@ RSpec.describe "Users can add a favorite" do
       @artist2 = Artist.create(name: "Joel Ansett", zipcode: "80126", spotify_id: "49IjdVEbQcukWy36sdRMzl", city: "Denver", state: "CO", genre: ["indie", "pop"])
       @artist3 = Artist.create(name: "YaSi", zipcode: "80126", spotify_id: "7emRqFqumIU39rRPvK3lbE", city: "Denver", state: "CO", genre: ["pop"])
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
-
+       zipcode_stub = File.read('spec/fixtures/zipcodes/80210_radius_of_15.json')
+       stub_request(:get, "http://localhost:4567/zipradius?radius=15&zip=80210").
+         with(
+           headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent'=>'Faraday v1.0.1'
+           }).
+         to_return(status: 200, body: zipcode_stub, headers: {})
       visit "/artists" 
       within ".artist-header" do 
         click_on @artist1.name
