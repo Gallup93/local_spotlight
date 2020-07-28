@@ -4,8 +4,7 @@ class User < ApplicationRecord
 
   def find_zipcodes(zip)
     conn = Faraday.new("https://frozen-sierra-74026.herokuapp.com")
-    response = conn.get("/zipradius?radius=15&zip=#{zip}")
-
+    response = conn.get("/zipradius?radius=#{params[:radius]}&zip=#{zip}")
   end
 
   def favorited?(user_id, artist_id)
