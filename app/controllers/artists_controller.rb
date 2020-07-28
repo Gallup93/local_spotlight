@@ -19,13 +19,8 @@ class ArtistsController < ApplicationController
 
   def show
     @artist = Artist.find(params[:id])
-    conn = Faraday.new(url: "https://api.spotify.com") do |faraday|
-      faraday.headers["Authorization"] = "Bearer #{current_user.token}"
-    end
-    response = conn.get("/v1/artists/#{@artist.spotify_id}/albums")
-    
-    @artist_albums = JSON.parse(response.body, symbolize_names: true)
-   
+    results = AlbumSearch.new 
+    @albums = results.albums(@artist, current_user.token)
   end
 
   private
