@@ -33,9 +33,8 @@ RSpec.describe "As a user" do
 
       expect(page).to have_content(artist.name)
       expect(page).to have_content(artist.description)
-
+      
       expect(page).to have_css('.player')
-
     end
   end
 end
