@@ -10,7 +10,7 @@ RSpec.describe "Users can add a favorite" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
       
       zipcode_stub = File.read('spec/fixtures/zipcodes/80126_radius_of_15.json')
-      stub_request(:get, "http://localhost:4567/zipradius?radius=15&zip=80210").
+      stub_request(:get, "https://frozen-sierra-74026.herokuapp.com/zipradius?radius=15&zip=80210").
          with(
            headers: {
           'Accept'=>'*/*',
@@ -49,7 +49,7 @@ RSpec.describe "Users can add a favorite" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
       
       zipcode_stub = File.read('spec/fixtures/zipcodes/80126_radius_of_15.json')
-      stub_request(:get, "http://localhost:4567/zipradius?radius=15&zip=80210").
+      stub_request(:get, "https://frozen-sierra-74026.herokuapp.com/zipradius?radius=15&zip=80210").
          with(
            headers: {
           'Accept'=>'*/*',
@@ -99,7 +99,7 @@ RSpec.describe "Users can add a favorite" do
       @artist3 = Artist.create(name: "YaSi", zipcode: "80126", spotify_id: "7emRqFqumIU39rRPvK3lbE", city: "Denver", state: "CO", genre: ["pop"])
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
        zipcode_stub = File.read('spec/fixtures/zipcodes/80210_radius_of_15.json')
-       stub_request(:get, "http://localhost:4567/zipradius?radius=15&zip=80210").
+       stub_request(:get, "https://frozen-sierra-74026.herokuapp.com/zipradius?radius=15&zip=80210").
          with(
            headers: {
           'Accept'=>'*/*',
