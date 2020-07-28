@@ -1,13 +1,18 @@
-<h1>Preferences:</h1>
 
-<% if current_user.zipcode %>
-  <h3>Your current zip: <%= current_user.zipcode %> </h3>
-<% else %>
-  <h3>Enter your zip to get started.</h3>
-<% end %>
+<section align="center">
+  <h1>Preferences:</h1><br><br>
 
-<%= form_tag "/api/v1/users", method: :patch do %>
-<%= label_tag "Zipcode" %><br>
-<%= text_field_tag :zipcode %><br>
-<%= submit_tag "Update Preferences" %><br>
-<% end %>
+  <% if current_user.zipcode %>
+    <h3>Your current zip: <%= current_user.zipcode %> </h3>
+  <% else %>
+    <h3>Enter your zip to get started.</h3>
+  <% end %>
+
+  <br><br>
+
+  <%= form_tag "/api/v1/users", method: :patch do %>
+  <h4><%= label_tag "Zipcode" %></h4><br>
+  <%= text_field_tag :zipcode %><br><br>
+  <p><%= submit_tag "Update Preferences" %></p><br>
+  <% end %>
+</section>

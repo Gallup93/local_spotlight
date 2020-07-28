@@ -1,49 +1,62 @@
-
+<br>
 <div class="artist-name">
   <h3 align="center">Name: <%=@artist.name%></h3>
 </div>
-
-<br>
-
+  <br>
 <div class="description", align="center">
-    <h4 align="center">Description:</h4>
+  <h4 align="center">Description:</h4>
     <% if @artist.description.nil?%>
-        <p>This artist does not have a description</p>
+      <p>This artist does not have a description</p>
     <%else%>
-        <%=@artist.description%>
+      <p><%=@artist.description%><p>
     <%end%>
 </div>
+<div align="center">
+  <% if !current_user.favorited?(current_user.id, @artist.id) %>
+    <h3 class="fav-link"> <%= link_to "FAV", "/favorites/#{@artist.id}/new" %>  </h3>  </br>
+  <% end %>
+</div>
 
-<% if !current_user.favorited?(current_user.id, @artist.id) %>
-  <h3 class="fav-link"> <%= link_to "FAV", "/favorites/#{@artist.id}/new" %>  </h3>  </br>
-<% end %>
-
-<br><br>
-
-<section class="player", align="center">
-    <%if params[:new_album] %>
-        <ul>
-          <iframe src=<%="https://open.spotify.com/embed/album/#{params[:new_album]}"%> width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe><br>
-          <%=button_to "Top Tracks", artist_path(@artist.id), method: :get%>
-        </ul>   
-
-    <%else%>
-        <iframe src=<%="https://open.spotify.com/embed/artist/#{@artist.spotify_id}"%> width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-    <%end%>
-</section>
-
-<br><br>
-
-
-  <section class="links", align="center">
-  <h1>Albums</h1>
-  <div class="scroll_bar">
-    <ul style="list-style-type:none;">
-      <%@albums.each do |album|%>
-        <h4><li><%=album.name%></li><h4>
-        <%=link_to image_tag(album.cover, size: "200x200"), artist_path(@artist.id, :new_album => album.id)%>
-      <%end%>
-    </ul>
+  
+  
+  <div class="show_page_split show_left">
+    <div class="show_page_centered_left">
+      <section class="player", align="center">
+          <%if params[:new_album] %>
+              <ul>
+                <h4>Album</h3>
+                <iframe src=<%="https://open.spotify.com/embed/album/#{params[:new_album]}"%> width="400" height="480" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe><br>
+                <%=button_to "Top Tracks", artist_path(@artist.id), method: :get%>
+                <br><br><br>
+              </ul>   
+          <%else%>
+              <h4>Top Tracks</h3>
+              <iframe src=<%="https://open.spotify.com/embed/artist/#{@artist.spotify_id}"%> width="400" height="480" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+              <br><br><br>
+          <%end%>
+      </section>
+    </div>
   </div>
-</section>
+
+  <br>
+
+
+
+
+  <div class="show_page_split show_right">
+    <div class="show_page_centered_right">
+      <section class="links", align="center">
+        <h1>Albums</h1>
+          <div class="scroll_bar">
+           <ul style="list-style-type:none;">
+             <%@albums.each do |album|%>
+               <h4><li><%=album.name%></li><h4>
+                <%=link_to image_tag(album.cover, size: "200x200"), artist_path(@artist.id, :new_album => album.id)%>
+            <%end%>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+
       
