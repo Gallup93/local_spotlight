@@ -15,25 +15,31 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
-  
+
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include FactoryBot::Syntax::Methods
-  
+
   config.use_transactional_fixtures = true
 
-  
+
   config.infer_spec_type_from_file_location!
 
-  
+
   config.filter_rails_from_backtrace!
-  
-  
+
+
   Shoulda::Matchers.configure do |config|
-      config.integrate do |with|
-        with.test_framework :rspec
-        with.library :rails
-      end
+    config.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
+    end
   end
-
 end
-
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+  config.hook_into :webmock
+  config.default_cassette_options = { record: :new_episodes }
+  config.filter_sensitive_data('<SPOTIFY_CLIENT_ID>') { ENV['SPOTIFY_CLIENT_ID'] }
+  config.filter_sensitive_data('<SPOTIFY_CLIENT_SECRET>') { ENV['SPOTIFY_CLIENT_SECRET'] }
+  config.configure_rspec_metadata!
+end
