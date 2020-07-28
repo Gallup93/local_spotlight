@@ -29,4 +29,21 @@ class ApplicationController < ActionController::Base
   def find_artist_by_id(id)
     Artist.find(id)
   end
+
+  def find_artist_by_spotify_id(spotify_id)
+    Artist.find_by spotify_id: spotify_id
+  end
+
+  def select_genres(genres)
+    house_genres = ["pop", "rock", "country", "jazz", "hip hop", "rap", "R&B", "punk", "electronic", "psychedelic", "indie"]
+    matching_genres = []
+    genres.each do |genre|
+      house_genres.each do |h_genre|
+        if genre.include?(h_genre)
+          matching_genres << h_genre
+        end
+      end
+    end
+    matching_genres.uniq
+  end
 end

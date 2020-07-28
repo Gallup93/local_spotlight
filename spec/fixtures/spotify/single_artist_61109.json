@@ -1,0 +1,54 @@
+{
+  "external_urls": {
+    "spotify": "https://open.spotify.com/artist/1LB8qB5BPb3MHQrfkvifXU"
+  },
+  "followers": {
+    "href": null,
+    "total": 807548
+  },
+  "genres": [
+    "album rock",
+    "art rock",
+    "beatlesque",
+    "classic rock",
+    "dance rock",
+    "glam metal",
+    "glam rock",
+    "hard rock",
+    "heartland rock",
+    "mellow gold",
+    "new wave pop",
+    "pop rock",
+    "power pop",
+    "rock",
+    "soft rock"
+  ],
+  "href": "https://api.spotify.com/v1/artists/1LB8qB5BPb3MHQrfkvifXU",
+  "id": "1LB8qB5BPb3MHQrfkvifXU",
+  "images": [
+    {
+      "height": 1000,
+      "url": "https://i.scdn.co/image/ebb323f7c72924bd0ceb98e69d50373b99ccf3ac",
+      "width": 1000
+    },
+    {
+      "height": 640,
+      "url": "https://i.scdn.co/image/19f82d0a11059a2069fb00392b6504be2560c0c0",
+      "width": 640
+    },
+    {
+      "height": 200,
+      "url": "https://i.scdn.co/image/098c463f95e2a5b3319911c8cd980f1d77e627c8",
+      "width": 200
+    },
+    {
+      "height": 64,
+      "url": "https://i.scdn.co/image/b87942f0bdbf07448c2b176fb6b300931528ed2a",
+      "width": 64
+    }
+  ],
+  "name": "Cheap Trick",
+  "popularity": 66,
+  "type": "artist",
+  "uri": "spotify:artist:1LB8qB5BPb3MHQrfkvifXU"
+}

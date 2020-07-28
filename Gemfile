@@ -24,6 +24,7 @@ gem 'faraday'
 gem 'figaro'
 gem 'pry'
 gem 'travis'
+gem 'zip-codes'
 
 group :test do
   gem 'shoulda-matchers'
