@@ -5,13 +5,12 @@ class ArtistsController < ApplicationController
 
   def create
     service = GetSpotifyArtist.new
-    json = service.find_artist(params[:spotify_id], params[:authenticity_token])
+    json = service.find_artist(params[:spotify_id], current_user.token)
     json_parsed = JSON.parse(json.body, symbolize: true)
     matching_genres = select_genres(json_parsed["genres"])
 
-
     zip_info = ZipCodes.identify(params[:zipcode])
-    require "pry";binding.pry
+
     artist = Artist.new(name: json_parsed["name"], followers: json_parsed["followers"]["total"], genre: matching_genres, images: json_parsed["images"], popularity: json_parsed["popularity"], spotify_id: params[:spotify_id], zipcode: params[:zipcode], description: params[:description], city: zip_info[:city], state: zip_info[:state_name])
 
     if !find_artist_by_spotify_id(params[:spotify_id]) && artist.save
