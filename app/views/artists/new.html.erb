@@ -10,13 +10,15 @@
 <%= label_tag "Zipcode" %><br>
 <%= text_field_tag :zipcode %><br>
 Genre:<br>
-<%= label_tag :rock, ("Rock") %>
+<%= label_tag :rock, ("Rock & Roll") %>
 <%= check_box_tag :rock %>
 <%= label_tag :country, ("Country") %>
 <%= check_box_tag :country %>
 <%= label_tag :pop, ("Pop") %>
 <%= check_box_tag :pop %>
 <%= label_tag :jazz, ("Jazz") %>
-<%= check_box_tag :jazz %><br>
+<%= check_box_tag :jazz %>
+<%= label_tag :blues, ("Blues") %>
+<%= check_box_tag :blues %><br>
 <%= submit_tag "Add Artist" %><br>
 <% end  %>

@@ -1,11 +1,10 @@
 class ArtistsController < ApplicationController
 
-
   def new
   end
 
   def create
-    artist = Artist.create(artist_params)   
+    artist = Artist.create(artist_params)
     artist.update(genre: genre_params)
 
     redirect_to artist_path(artist.id)
@@ -13,13 +12,13 @@ class ArtistsController < ApplicationController
 
   def index
     zipcodes = current_user.find_zipcodes(current_user.zipcode)
-  
+
     @artists = artists_nearby(zipcodes)
   end
 
   def show
     @artist = Artist.find(params[:id])
-    results = AlbumSearch.new 
+    results = AlbumSearch.new
     @albums = results.albums(@artist, current_user.token)
   end
 
@@ -30,8 +29,6 @@ class ArtistsController < ApplicationController
 
   def genre_params
     acc = params.permit(:rock, :pop, :jazz, :country)
-    acc.keys 
+    acc.keys
   end
 end
-
-
