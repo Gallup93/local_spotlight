@@ -1,11 +1,10 @@
 class ArtistsController < ApplicationController
 
-
   def new
   end
 
   def create
-    artist = Artist.create(artist_params)   
+    artist = Artist.create(artist_params)
     artist.update(genre: genre_params)
 
     redirect_to artist_path(artist.id)
@@ -13,7 +12,7 @@ class ArtistsController < ApplicationController
 
   def index
     zipcodes = current_user.find_zipcodes(current_user.zipcode)
-  
+
     @artists = artists_nearby(zipcodes)
   end
 
@@ -23,9 +22,8 @@ class ArtistsController < ApplicationController
       faraday.headers["Authorization"] = "Bearer #{current_user.token}"
     end
     response = conn.get("/v1/artists/#{@artist.spotify_id}/albums")
-    
+
     @artist_albums = JSON.parse(response.body, symbolize_names: true)
-   
   end
 
   private
@@ -35,8 +33,6 @@ class ArtistsController < ApplicationController
 
   def genre_params
     acc = params.permit(:rock, :pop, :jazz, :country)
-    acc.keys 
+    acc.keys
   end
 end
-
-
