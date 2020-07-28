@@ -11,9 +11,9 @@ RSpec.describe "As a registered user, when I visit the artists index page" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
     #allow_any_instance_of(ApplicationController).to receive(:artists_nearby).and_return([@artist1, @artist2, @artist3, @artist4])
   end
-  it "then I see all of the artists in the database" do  
+  it "then I see all of the artists in the database" do
     zipcode_stub = File.read('spec/fixtures/zipcodes/61109_radius_of_15.json')
-    acc = stub_request(:get, "http://localhost:4567/zipradius?radius=15&zip=61109").
+    acc = stub_request(:get, "https://frozen-sierra-74026.herokuapp.com/zipradius?radius=15&zip=61109").
     with(
       headers: {
         'Accept'=>'*/*',
@@ -21,22 +21,22 @@ RSpec.describe "As a registered user, when I visit the artists index page" do
         'User-Agent'=>'Faraday v1.0.1'
         }).
         to_return(status: 200, body: zipcode_stub, headers: {})
-      
+
     visit '/artists'
-  
+
     within '.artist-header' do
       expect(page).to have_content(@artist5.name)
     end
 
-    expect(page).to_not have_link(@artist1.name)  
-    expect(page).to_not have_link(@artist2.name)   
-    expect(page).to_not have_link(@artist3.name)  
+    expect(page).to_not have_link(@artist1.name)
+    expect(page).to_not have_link(@artist2.name)
+    expect(page).to_not have_link(@artist3.name)
     expect(page).to_not have_link(@artist4.name)
- 
+
   end
   it "I can provide a zipcode to browse artists in new areas" do
     zipcode_stub = File.read('spec/fixtures/zipcodes/80126_radius_of_15.json')
-    stub_request(:get, "http://localhost:4567/zipradius?radius=15&zip=61109").
+    stub_request(:get, "https://frozen-sierra-74026.herokuapp.com/zipradius?radius=15&zip=61109").
       with(
         headers: {
       'Accept'=>'*/*',

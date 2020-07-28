@@ -1,11 +1,9 @@
 class ArtistsController < ApplicationController
 
-
   def new
   end
 
   def create
-
     service = GetSpotifyArtist.new
     json = service.find_artist(params[:spotify_id], params[:authenticity_token])
     json_parsed = JSON.parse(json.body, symbolize: true)
@@ -13,6 +11,7 @@ class ArtistsController < ApplicationController
 
 
     zip_info = ZipCodes.identify(params[:zipcode])
+    require "pry";binding.pry
     artist = Artist.new(name: json_parsed["name"], followers: json_parsed["followers"]["total"], genre: matching_genres, images: json_parsed["images"], popularity: json_parsed["popularity"], spotify_id: params[:spotify_id], zipcode: params[:zipcode], description: params[:description], city: zip_info[:city], state: zip_info[:state_name])
 
     if !find_artist_by_spotify_id(params[:spotify_id]) && artist.save
@@ -31,13 +30,8 @@ class ArtistsController < ApplicationController
 
   def show
     @artist = Artist.find(params[:id])
-    conn = Faraday.new(url: "https://api.spotify.com") do |faraday|
-      faraday.headers["Authorization"] = "Bearer #{current_user.token}"
-    end
-    response = conn.get("/v1/artists/#{@artist.spotify_id}/albums")
-
-    @artist_albums = JSON.parse(response.body, symbolize_names: true)
-
+    results = AlbumSearch.new
+    @albums = results.albums(@artist, current_user.token)
   end
 
   private

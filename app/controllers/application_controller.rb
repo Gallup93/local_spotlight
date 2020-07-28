@@ -35,15 +35,19 @@ class ApplicationController < ActionController::Base
   end
 
   def select_genres(genres)
-    house_genres = ["pop", "rock", "country", "jazz", "hip hop", "rap", "R&B", "punk", "electronic", "psychedelic", "indie"]
-    matching_genres = []
-    genres.each do |genre|
-      house_genres.each do |h_genre|
-        if genre.include?(h_genre)
-          matching_genres << h_genre
+    if !genres.nil?
+      house_genres = ["pop", "rock", "country", "jazz", "hip hop", "rap", "R&B", "punk", "electronic", "psychedelic", "indie"]
+      matching_genres = []
+      genres.each do |genre|
+        house_genres.each do |h_genre|
+          if genre.include?(h_genre)
+            matching_genres << h_genre
+          end
         end
       end
+      matching_genres.uniq
+    else
+      "No listed genres"
     end
-    matching_genres.uniq
   end
 end

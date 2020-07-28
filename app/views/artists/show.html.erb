@@ -39,9 +39,9 @@
   <h1>Albums</h1>
   <div class="scroll_bar">
     <ul style="list-style-type:none;">
-      <%@artist_albums[:items].each do |album|%>
-        <h4><li><%=album[:name]%></li><h4>
-        <%=link_to image_tag(album[:images].first[:url], size: "200x200"), artist_path(@artist.id, :new_album => album[:id])%>
+      <%@albums.each do |album|%>
+        <h4><li><%=album.name%></li><h4>
+        <%=link_to image_tag(album.cover, size: "200x200"), artist_path(@artist.id, :new_album => album.id)%>
       <%end%>
     </ul>
   </div>
