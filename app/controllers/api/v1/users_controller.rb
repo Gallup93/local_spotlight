@@ -1,6 +1,5 @@
 class Api::V1::UsersController < ApplicationController
   def create
-
     body = {
       grant_type: "authorization_code",
       code: params[:code],
