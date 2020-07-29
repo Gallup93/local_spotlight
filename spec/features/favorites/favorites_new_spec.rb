@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "Users can add a favorite" do
   context "from the artists index page" do
-    it "top displayed artist has a link nearby to add artist as favrotie" do
-      @user1 = User.create(username: "Music McMusic", email: "music@hotmail.com", zipcode: "80210" )
-      @artist1 = Artist.create(name: "Colfax Speed Queen", zipcode: "80126", spotify_id: "3p9nYbFprckRkRxuCFVQcx", city: "Denver", state: "CO", genre: ["garage", "punk"])
-      @artist2 = Artist.create(name: "Joel Ansett", zipcode: "80126", spotify_id: "49IjdVEbQcukWy36sdRMzl", city: "Denver", state: "CO", genre: ["indie", "pop"])
-      @artist3 = Artist.create(name: "YaSe", zipcode: "80126", spotify_id: "7emRqFqumIU39rRPvK3lbE", city: "Denver", state: "CO", genre: ["pop"])
+    it "top displayed artist has a link nearby to add artist as favrotie", :vcr do
+      @user1 = User.create(username: "Music McMusic", email: "music@hotmail.com", zipcode: "80210", token: ENV['SPOTIFY_TEMP_TOKEN'])
+      @artist1 = Artist.create(followers: 3333, name: "Colfax Speed Queen", zipcode: "80126", spotify_id: "3p9nYbFprckRkRxuCFVQcx", city: "Denver", state: "CO", genre: ["garage", "punk"])
+      @artist2 = Artist.create(followers: 3333, name: "Joel Ansett", zipcode: "80126", spotify_id: "49IjdVEbQcukWy36sdRMzl", city: "Denver", state: "CO", genre: ["indie", "pop"])
+      @artist3 = Artist.create(followers: 3333, name: "YaSe", zipcode: "80126", spotify_id: "7emRqFqumIU39rRPvK3lbE", city: "Denver", state: "CO", genre: ["pop"])
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
 
       zipcode_stub = File.read('spec/fixtures/zipcodes/80126_radius_of_15.json')
@@ -19,6 +19,16 @@ RSpec.describe "Users can add a favorite" do
           'User-Agent'=>'Faraday v1.0.1'
            }).
          to_return(status: 200, body: zipcode_stub, headers: {})
+
+      visit 'api/v1/user'
+
+      expect(current_path).to eq("/api/v1/preferences")
+
+      fill_in :zipcode, with: '80126'
+
+      click_on "Update Preferences"
+
+      expect(current_path).to eq("/api/v1/dashboard")
 
       visit "/artists"
 
@@ -45,16 +55,16 @@ RSpec.describe "Users can add a favorite" do
       expect(page).to have_content(@artist3.name)
     end
 
-    it "wont display 'FAV' link if artist is already facortied" do
-      @user1 = User.create(username: "Music McMusic", email: "music@hotmail.com", zipcode: "80210" )
-      @artist1 = Artist.create(name: "Colfax Speed Queen", zipcode: "80126", spotify_id: "3p9nYbFprckRkRxuCFVQcx", city: "Denver", state: "CO", genre: ["garage", "punk"])
-      @artist2 = Artist.create(name: "Joel Ansett", zipcode: "80126", spotify_id: "49IjdVEbQcukWy36sdRMzl", city: "Denver", state: "CO", genre: ["indie", "pop"])
-      @artist3 = Artist.create(name: "YaSe", zipcode: "80126", spotify_id: "7emRqFqumIU39rRPvK3lbE", city: "Denver", state: "CO", genre: ["pop"])
+    it "wont display 'FAV' link if artist is already facortied", :vcr do
+      @user1 = User.create(username: "Music McMusic", email: "music@hotmail.com", zipcode: "80210", token: ENV['SPOTIFY_TEMP_TOKEN'])
+      @artist1 = Artist.create(followers: 6565, name: "Colfax Speed Queen", zipcode: "80126", spotify_id: "3p9nYbFprckRkRxuCFVQcx", city: "Denver", state: "CO", genre: ["garage", "punk"])
+      @artist2 = Artist.create(followers: 6565, name: "Joel Ansett", zipcode: "80126", spotify_id: "49IjdVEbQcukWy36sdRMzl", city: "Denver", state: "CO", genre: ["indie", "pop"])
+      @artist3 = Artist.create(followers: 6565, name: "YaSe", zipcode: "80126", spotify_id: "7emRqFqumIU39rRPvK3lbE", city: "Denver", state: "CO", genre: ["pop"])
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
 
       zipcode_stub = File.read('spec/fixtures/zipcodes/80126_radius_of_15.json')
 
-      stub_request(:get, "https://frozen-sierra-74026.herokuapp.com/zipradius?radius=15&zip=80210").
+      stub_request(:get, "https://localhost4567/zipradius?radius=15&zip=80210").
          with(
            headers: {
           'Accept'=>'*/*',
@@ -74,6 +84,16 @@ RSpec.describe "Users can add a favorite" do
           'User-Agent'=>'Faraday v1.0.1'
            }).
         to_return(status: 200, body: album_stub, headers: {})
+
+      visit 'api/v1/user'
+
+      expect(current_path).to eq("/api/v1/preferences")
+
+      fill_in :zipcode, with: '80126'
+
+      click_on "Update Preferences"
+
+      expect(current_path).to eq("/api/v1/dashboard")
 
       visit "/artists"
 
@@ -102,17 +122,16 @@ RSpec.describe "Users can add a favorite" do
            }).
          to_return(status: 200, body: artist_albums, headers: {})
 
-      @user1 = User.create(username: "Music McMusic", email: "music@hotmail.com", zipcode: "80210",
-                              token: "BQDoIHbutFl66vfjpfnzj76oDpDevqT0HqMZIBbPllk-KmY05M7VbqMoNwk-JAN3XqqVLpw5EE0R69RQiga3q52C7Jcx3pd7Z4ajkefuz15ud1bWwB683i7agHc92WqOMVAsjO99znYALeJympHuUQ7XSMlxpiF7FT7-3pF_eriVUxsvEp0AtO9FsFV_6_Jn")
-      @artist1 = Artist.create(name: "Colfax Speed Queen", zipcode: "80126", spotify_id: "3p9nYbFprckRkRxuCFVQcx", city: "Denver", state: "CO", genre: ["garage", "punk"])
-      @artist2 = Artist.create(name: "Joel Ansett", zipcode: "80126", spotify_id: "49IjdVEbQcukWy36sdRMzl", city: "Denver", state: "CO", genre: ["indie", "pop"])
-      @artist3 = Artist.create(name: "YaSi", zipcode: "80126", spotify_id: "7emRqFqumIU39rRPvK3lbE", city: "Denver", state: "CO", genre: ["pop"])
+      @user1 = User.create(username: "Music McMusic", email: "music@hotmail.com", zipcode: "80210", token: ENV['SPOTIFY_TEMP_TOKEN'])
+      @artist1 = Artist.create(followers: 7788, name: "Colfax Speed Queen", zipcode: "80126", spotify_id: "3p9nYbFprckRkRxuCFVQcx", city: "Denver", state: "CO", genre: ["garage", "punk"])
+      @artist2 = Artist.create(followers: 7788, name: "Joel Ansett", zipcode: "80126", spotify_id: "49IjdVEbQcukWy36sdRMzl", city: "Denver", state: "CO", genre: ["indie", "pop"])
+      @artist3 = Artist.create(followers: 7788, name: "YaSi", zipcode: "80126", spotify_id: "7emRqFqumIU39rRPvK3lbE", city: "Denver", state: "CO", genre: ["pop"])
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
 
        zipcode_stub = File.read('spec/fixtures/zipcodes/80210_radius_of_15.json')
 
-       stub_request(:get, "https://frozen-sierra-74026.herokuapp.com/zipradius?radius=15&zip=80210").
+       stub_request(:get, "https://localhost4567/zipradius?radius=15&zip=80210").
          with(
            headers: {
           'Accept'=>'*/*',
@@ -120,6 +139,16 @@ RSpec.describe "Users can add a favorite" do
           'User-Agent'=>'Faraday v1.0.1'
            }).
          to_return(status: 200, body: zipcode_stub, headers: {})
+
+     visit 'api/v1/user'
+
+     expect(current_path).to eq("/api/v1/preferences")
+
+     fill_in :zipcode, with: '80126'
+
+     click_on "Update Preferences"
+
+     expect(current_path).to eq("/api/v1/dashboard")
 
       artist = Artist.first
 
@@ -132,7 +161,7 @@ RSpec.describe "Users can add a favorite" do
       click_on "FAV"
 
       visit "/favorites"
-      
+
       expect(page).to have_content(artist.name)
     end
   end

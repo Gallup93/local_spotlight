@@ -2,10 +2,10 @@ class User < ApplicationRecord
   has_many :user_artists
   has_many :artists, through: :user_artists
 
-  def find_zipcodes(zip)
-    conn = Faraday.new("https://frozen-sierra-74026.herokuapp.com")
-    response = conn.get("/zipradius?radius=15&zip=#{zip}")
-
+  def find_zipcodes_and_radius(zip, radius)
+    radius = radius.delete(" Miles")
+    conn = Faraday.new("http://localhost:4567")
+    response = conn.get("/zipradius?radius=#{radius}&zip=#{zip}")
   end
 
   def favorited?(user_id, artist_id)

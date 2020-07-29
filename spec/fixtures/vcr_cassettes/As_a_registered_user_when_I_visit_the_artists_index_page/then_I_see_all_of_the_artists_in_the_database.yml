@@ -1,0 +1,223 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://frozen-sierra-74026.herokuapp.com/zipradius?radius=15&zip=61109
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 28 Jul 2020 21:33:20 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - text/html;charset=utf-8
+      Content-Length:
+      - '150'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server:
+      - thin
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '611096110461125611266110261016611056110661110611126102061107610526108461108610436111461131611306113261049611036110160146610886111161010610086012961115'
+  recorded_at: Tue, 28 Jul 2020 21:33:21 GMT
+- request:
+    method: get
+    uri: https://frozen-sierra-74026.herokuapp.com/zipradius?radius=15&zip=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      Date:
+      - Tue, 28 Jul 2020 21:54:02 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - text/html;charset=utf-8
+      Content-Length:
+      - '30'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server:
+      - thin
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: "<h1>Internal Server Error</h1>"
+  recorded_at: Tue, 28 Jul 2020 21:54:02 GMT
+- request:
+    method: post
+    uri: https://accounts.spotify.com/api/token
+    body:
+      encoding: UTF-8
+      string: client_id=<SPOTIFY_CLIENT_ID>&client_secret=<SPOTIFY_CLIENT_SECRET>&code&grant_type=authorization_code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fv1%2Fuser
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Wed, 29 Jul 2020 02:11:24 GMT
+      Content-Type:
+      - application/json
+      Set-Cookie:
+      - __Host-device_id=AQA9XMMOYsNnN_6saxrNAKZnojURgBp1ssltBT-JqnKic8hNjYq1y1lytDeg0ZEGI907dEaSWLp3NEZvQFAtgSWb9fFH2RyaqVc;Version=1;Path=/;Max-Age=2147483647;Secure;HttpOnly;SameSite=Lax
+      Server:
+      - envoy
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      Via:
+      - HTTP/2 edgeproxy, 1.1 google
+      Alt-Svc:
+      - clear
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":"invalid_request","error_description":"code must be supplied"}'
+  recorded_at: Wed, 29 Jul 2020 02:11:24 GMT
+- request:
+    method: get
+    uri: https://api.spotify.com/v1/me
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Www-Authenticate:
+      - Bearer realm="spotify", error="invalid_request", error_description="Only valid
+        bearer authentication supported"
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version,
+        X-Cloud-Trace-Context
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS, PUT, DELETE, PATCH
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Max-Age:
+      - '604800'
+      Content-Type:
+      - application/json
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Wed, 29 Jul 2020 02:11:23 GMT
+      Server:
+      - envoy
+      Via:
+      - HTTP/2 edgeproxy, 1.1 google
+      Alt-Svc:
+      - clear
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "error": {
+            "status": 400,
+            "message": "Only valid bearer authentication supported"
+          }
+        }
+  recorded_at: Wed, 29 Jul 2020 02:11:24 GMT
+- request:
+    method: get
+    uri: http://localhost:4567/zipradius?radius=15&zip=61109
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/html;charset=utf-8
+      Content-Length:
+      - '150'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      Connection:
+      - keep-alive
+      Server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '611096110461125611266110261016611056110661110611126102061107610526108461108610436111461131611306113261049611036110160146610886111161010610086012961115'
+  recorded_at: Wed, 29 Jul 2020 04:41:01 GMT
+recorded_with: VCR 6.0.0
