@@ -6,7 +6,12 @@ class SessionsController < ApplicationController
   end
 
   def update
-    session[:temp_zip] = params["zipcode"]
+    if params[:zipcode]
+      session[:temp_zip] = params["zipcode"]  
+    end
+    if params[:radius]
+      session[:radius] = params[:radius]
+    end
     redirect_to request.referrer
   end
 end

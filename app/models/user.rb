@@ -2,7 +2,8 @@ class User < ApplicationRecord
   has_many :user_artists
   has_many :artists, through: :user_artists
 
-  def find_zipcodes(zip)
+  def find_zipcodes_and_radius(zip, radius)
+    radius = radius.delete(" Miles")
     conn = Faraday.new("https://frozen-sierra-74026.herokuapp.com")
     response = conn.get("/zipradius?radius=#{params[:radius]}&zip=#{zip}")
   end

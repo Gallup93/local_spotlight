@@ -34,6 +34,7 @@ class Api::V1::UsersController < ApplicationController
     end
     session[:user_id] = @user.id
     session[:temp_zip] = @user.zipcode
+    session[:radius] = "15 Miles"
   end
 
   def show
