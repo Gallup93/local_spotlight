@@ -11,7 +11,10 @@ class ArtistsController < ApplicationController
 
     zip_info = ZipCodes.identify(params[:zipcode])
 
-    artist = Artist.new(name: json_parsed["name"], followers: json_parsed["followers"]["total"], genre: matching_genres, images: json_parsed["images"], popularity: json_parsed["popularity"], spotify_id: params[:spotify_id], zipcode: params[:zipcode], description: params[:description], city: zip_info[:city], state: zip_info[:state_name])
+    artist = Artist.new(name: json_parsed["name"], followers: json_parsed["followers"]["total"],
+      genre: matching_genres, images: json_parsed["images"], popularity: json_parsed["popularity"],
+      spotify_id: params[:spotify_id], zipcode: params[:zipcode], description: params[:description],
+      city: zip_info[:city], state: zip_info[:state_name])
 
     if !find_artist_by_spotify_id(params[:spotify_id]) && artist.save
       redirect_to artist_path(artist.id)
