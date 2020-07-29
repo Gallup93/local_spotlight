@@ -24,6 +24,10 @@ gem 'faraday'
 gem 'figaro'
 gem 'pry'
 gem 'travis'
+
+gem 'bootstrap'
+gem 'jquery-rails'
+
 gem 'zip-codes'
 
 
