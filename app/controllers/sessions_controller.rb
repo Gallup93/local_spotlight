@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   end
 
   def update
-    if params[:zipcode]
+    if !ZipCodes.identify(params[:zipcode]).nil?
       session[:temp_zip] = params["zipcode"]
     end
     if params[:radius]

@@ -40,7 +40,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update
-    if params["zipcode"]
+    if !ZipCodes.identify(params["zipcode"]).nil?
       current_user.update_attribute(:zipcode, params["zipcode"])
       session[:temp_zip] = current_user.zipcode
       redirect_to "/api/v1/dashboard"
