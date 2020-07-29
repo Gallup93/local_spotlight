@@ -22,7 +22,6 @@ class Api::V1::UsersController < ApplicationController
     if @user == nil
       @user = User.create(
         username: user_params["display_name"],
-        href: user_params["external_urls"]["spotify"],
         email: user_params["email"],
         token: auth_params["access_token"],
         refresh_token: auth_params["refresh_token"]
@@ -34,6 +33,7 @@ class Api::V1::UsersController < ApplicationController
     end
     session[:user_id] = @user.id
     session[:temp_zip] = @user.zipcode
+    session[:radius] = "15 Miles"
   end
 
   def show

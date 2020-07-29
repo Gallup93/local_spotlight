@@ -251,6 +251,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
+    zip-codes (0.2.1)
 
 PLATFORMS
   ruby
@@ -280,6 +281,7 @@ DEPENDENCIES
   vcr
   web-console (>= 3.3.0)
   webmock
+  zip-codes
 
 RUBY VERSION
    ruby 2.5.3p105
