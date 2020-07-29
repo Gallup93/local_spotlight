@@ -38,9 +38,4 @@ class ArtistsController < ApplicationController
   def artist_params
     params.permit(:spotify_id, :zipcode, :description)
   end
-
-  # def genre_params
-  #   acc = params.permit(:rock, :pop, :jazz, :country)
-  #   acc.keys
-  # end
 end
