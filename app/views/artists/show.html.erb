@@ -1,21 +1,24 @@
 <br>
-<div class="artist-name">
-  <h3 align="center">Name: <%=@artist.name%></h3>
-</div>
+
+<section class="header">
+    <div class="artist-name">
+      <h3 align="center">Name: <%=@artist.name%></h3>
+    </div>
   <br>
-<div class="description", align="center">
-  <h4 align="center">Description:</h4>
-    <% if @artist.description.nil?%>
-      <p>This artist does not have a description</p>
-    <%else%>
-      <p><%=@artist.description%><p>
-    <%end%>
-</div>
-<div align="center">
-  <% if !current_user.favorited?(current_user.id, @artist.id) %>
-    <h3 class="fav-link"> <%= link_to "FAV", "/favorites/#{@artist.id}/new" %>  </h3>  </br>
-  <% end %>
-</div>
+    <div class="description", align="center">
+      <h4 align="center">Description:</h4>
+        <% if @artist.description.nil?%>
+          <p>This artist does not have a description</p>
+        <%else%>
+          <p><%=@artist.description%><p>
+        <%end%>
+    </div>
+  <div align="center">
+    <% if !current_user.favorited?(current_user.id, @artist.id) %>
+      <h3 class="fav-link"> <%= link_to "FAV", "/favorites/#{@artist.id}/new" %>  </h3>  </br>
+    <% end %>
+  </div>
+</section>
 
   
   
