@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "User dashboard", type: :feature do
   before :each do
-    @artist1 = Artist.create(name: "Ramakhandra", zipcode: "80216", spotify_id: "1Apw9xiab11PyZLo6YeUoJ", city: "Denver", state: "CO", genre: ["electronic", "psychedelic"])
-    @artist2 = Artist.create(name: "Smirk", zipcode: "80126", spotify_id: "3pwiEWINB62yhDUUODnHLj", city: "Denver", state: "CO", genre: ["instrumental", "jazz"])
-    @artist3 = Artist.create(name: "Décollage", zipcode: "80126", spotify_id: "0fcwfASKlWfHUqoeLZBgG3", city: "Denver", state: "CO", genre: ["psychedelic", "electronic"])
+    @artist1 = Artist.create(followers: 5433, name: "Ramakhandra", zipcode: "80216", spotify_id: "1Apw9xiab11PyZLo6YeUoJ", city: "Denver", state: "CO", genre: ["electronic", "psychedelic"])
+    @artist2 = Artist.create(followers: 5433, name: "Smirk", zipcode: "80126", spotify_id: "3pwiEWINB62yhDUUODnHLj", city: "Denver", state: "CO", genre: ["instrumental", "jazz"])
+    @artist3 = Artist.create(followers: 5433, name: "Décollage", zipcode: "80126", spotify_id: "0fcwfASKlWfHUqoeLZBgG3", city: "Denver", state: "CO", genre: ["psychedelic", "electronic"])
 
-    @user1 = User.create(username: "Rocky McMountain", email: "LoveMusic303@aol.com", zipcode: "80128")
+    @user1 = User.create(username: "Rocky McMountain", email: "LoveMusic303@aol.com", zipcode: "80128",  token: ENV['SPOTIFY_TEMP_TOKEN'])
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
   end
@@ -49,11 +49,6 @@ RSpec.describe "User dashboard", type: :feature do
         expect(page).to_not have_link(@artist2.name)
         expect(page).to_not have_link(@artist1.name)
       end
-
-      # artist show page doesnt exist yet...
-
-      # click_link "#{@artist3.name}"
-      # expect(current_path).to eq("/artists/#{@artist3.id}")
     end
   end
 end

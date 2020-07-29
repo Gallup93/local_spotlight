@@ -3,11 +3,10 @@ require 'rails_helper'
 RSpec.describe "As a user" do
   before(:each) do
     @user1 = User.create(username: "Music McMusic", email: "music@hotmail.com", zipcode: "80210",
-                         token: "BQAIJ8HsaN5CrY2kEopYq2Mc2dOvQpC-XesCuttVv78Oz_QJOAKNxIk2fzwAdD-UFbGErlaCJY_1cQFJcA-M0gQ2yg8-YeqF6tXq0J1Z4np9YY0x6xwcPGwIUnJu-SUdit6LZLhhZfTgj2t0cyG3N4BBi5JIBJ5rIn-xZ-8Ag_YJcwqiT_rbflPFYyF9aL2Q")
+                         token: "BQDuD9FNAPMxGmouEEYquJwOeX-mLL6uUs5mIzsxR3g2W_WgXmvctinBV9qTiqHZYaycgOs3kc8gyt-nr2O1_STU3b6GvuhfRPidQAJgmXwLZr9C2UEZQIqhun-hAlnQAS4nW9eqH3R2GglsBXvLeo77k4uB_IQddTOFWDHtXIuWTSbMnlPaWscMBYFbm3ma")
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
   end
-  describe "when I visit the new artist page" do
     it "has a form that allows me to input a new local artist", :vcr do
 
       visit '/api/v1/dashboard'
@@ -16,25 +15,24 @@ RSpec.describe "As a user" do
 
       expect(current_path).to eq(new_artist_path)
 
-      fill_in "name", with: "Smirk"
-      fill_in "spotify_id", with: '3pwiEWINB62yhDUUODnHLj'
-      fill_in "zipcode", with: '80126'
-      fill_in 'description', with: 'New Age Funk'
-
-      check 'Rock & Roll'
-      check 'Jazz'
-      check 'Blues'
+      fill_in :spotify_id, with: "1LB8qB5BPb3MHQrfkvifXU"
+      fill_in :description, with: "Momma's Alright. Daddy's Alright. They just seem a little weird"
+      fill_in :zipcode, with: 61109
 
       click_on("Add Artist")
 
       artist = Artist.last
 
-      expect(current_path).to eq(artist_path(artist))
+      expect(current_path).to eq("/artists/#{artist.id}")
 
-      expect(page).to have_content(artist.name)
-      expect(page).to have_content(artist.description)
-      
+      within ".artist-name" do
+        expect(page).to have_content("Cheap Trick")
+      end
+
+      within ".description" do
+        expect(page).to have_content("Momma's Alright. Daddy's Alright. They just seem a little weird")
+      end
+
       expect(page).to have_css('.player')
     end
   end
-end
