@@ -35,5 +35,21 @@ RSpec.describe "User preferences", type: :feature do
       expect(current_path).to eq("/api/v1/dashboard")
       expect(page).to have_content("Your current zipcode: 61109")
     end
+    it "cannot enter an invalid zip" do
+
+      @user = User.create(username: "Rocky McMountain", email: "LoveMusic303@aol.com", zipcode: 80128)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+
+      visit "/api/v1/preferences"
+      expect(page).to have_content("Preferences:")
+      expect(page).to have_content("Your current zip: 80128")
+
+      fill_in :zipcode, with: "00000"
+
+      click_on "Update Preferences"
+
+      expect(current_path).to eq("/api/v1/users")
+      expect(@user.zipcode).to eq('80128')
+    end
   end
 end
