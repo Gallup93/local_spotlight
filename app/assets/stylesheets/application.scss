@@ -5,7 +5,9 @@ html,
 body {
   background-image: url("lighter_background.jpg");
   background-size: cover;
+  
 }
+
 .topnav {
    overflow: hidden;
    background-color: #002244;
@@ -40,12 +42,13 @@ body {
 /* Split the screen in half */
 .split {
   height: 100%;
-  width: 50%;
+  width: 65%;
   position: fixed;
   z-index: 1;
   top: 10;
   overflow-x: hidden;
   padding-top: 20px;
+
 }
 
   .show_page_split {
@@ -56,6 +59,7 @@ body {
   top: 10;
   overflow-x: hidden;
   padding-top: 20px;
+
 }
 
 /* Control the left side */
@@ -67,8 +71,9 @@ body {
 /* Control the right side */
 .right {
   right: 0;
- 
 }
+
+
 
 .show_left {
   left: 0;
@@ -109,4 +114,33 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+}
+
+.grid-container{
+  display: grid;
+  grid-template-columns: max-content;
+  grid-template-rows: auto;
+  grid-gap: 30px;
+
+ }
+
+ .grid-item{
+  background: rgba(211,211,211, .35);
+  padding: 20px;
+  border: solid;
+  border-radius: 12px;
+  border-color: black;
+  text-align: center;
+ }
+
+  .item {
+    opacity: 100;
+  }
+
+  .element {
+	text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
 }
