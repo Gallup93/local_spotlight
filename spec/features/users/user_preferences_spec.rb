@@ -36,7 +36,6 @@ RSpec.describe "User preferences", type: :feature do
       expect(page).to have_content("Your current zipcode: 61109")
     end
     it "cannot enter an invalid zip" do
-
       @user = User.create(username: "Rocky McMountain", email: "LoveMusic303@aol.com", zipcode: 80128)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
