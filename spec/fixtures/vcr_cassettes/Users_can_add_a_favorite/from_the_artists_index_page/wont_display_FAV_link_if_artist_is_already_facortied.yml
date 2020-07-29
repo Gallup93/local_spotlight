@@ -1,126 +1,6 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://frozen-sierra-74026.herokuapp.com/zipradius?radius=15&zip=61109
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.0.1
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Tue, 28 Jul 2020 21:33:21 GMT
-      Connection:
-      - keep-alive
-      Content-Type:
-      - text/html;charset=utf-8
-      Content-Length:
-      - '150'
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      Server:
-      - thin
-      Via:
-      - 1.1 vegur
-    body:
-      encoding: UTF-8
-      string: '611096110461125611266110261016611056110661110611126102061107610526108461108610436111461131611306113261049611036110160146610886111161010610086012961115'
-  recorded_at: Tue, 28 Jul 2020 21:33:22 GMT
-- request:
-    method: get
-    uri: https://frozen-sierra-74026.herokuapp.com/zipradius?radius=15&zip=61109
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.0.1
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Tue, 28 Jul 2020 21:42:41 GMT
-      Connection:
-      - keep-alive
-      Content-Type:
-      - text/html;charset=utf-8
-      Content-Length:
-      - '150'
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      Server:
-      - thin
-      Via:
-      - 1.1 vegur
-    body:
-      encoding: UTF-8
-      string: '611096110461125611266110261016611056110661110611126102061107610526108461108610436111461131611306113261049611036110160146610886111161010610086012961115'
-  recorded_at: Tue, 28 Jul 2020 21:42:42 GMT
-- request:
-    method: get
-    uri: https://frozen-sierra-74026.herokuapp.com/zipradius?radius=15&zip=
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.0.1
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 500
-      message: Internal Server Error
-    headers:
-      Date:
-      - Tue, 28 Jul 2020 21:54:03 GMT
-      Connection:
-      - keep-alive
-      Content-Type:
-      - text/html;charset=utf-8
-      Content-Length:
-      - '30'
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      Server:
-      - thin
-      Via:
-      - 1.1 vegur
-    body:
-      encoding: UTF-8
-      string: "<h1>Internal Server Error</h1>"
-  recorded_at: Tue, 28 Jul 2020 21:54:03 GMT
-- request:
     method: post
     uri: https://accounts.spotify.com/api/token
     body:
@@ -141,11 +21,11 @@ http_interactions:
       message: Bad Request
     headers:
       Date:
-      - Wed, 29 Jul 2020 04:41:48 GMT
+      - Wed, 29 Jul 2020 05:23:50 GMT
       Content-Type:
       - application/json
       Set-Cookie:
-      - __Host-device_id=AQBwneeAqSBvoxp8pC7krKar_ECi3QhMwRL8GFA3d4ZPppHawvLDJCUTU8MdLOYRaC0btddtG1bYl74EuzJSp0g530L7dJb7sjE;Version=1;Path=/;Max-Age=2147483647;Secure;HttpOnly;SameSite=Lax
+      - __Host-device_id=AQBQg21UwGMs8BGhuRfF9We6sj3k_zcZPAznTSWV7YutFnRnFVCiwY_RNjWJ9JEynCwN7GXKyIBR6Z5JD80lbUZAA_SEoOexaDo;Version=1;Path=/;Max-Age=2147483647;Secure;HttpOnly;SameSite=Lax
       Server:
       - envoy
       Strict-Transport-Security:
@@ -163,7 +43,7 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: '{"error":"invalid_request","error_description":"code must be supplied"}'
-  recorded_at: Wed, 29 Jul 2020 04:41:48 GMT
+  recorded_at: Wed, 29 Jul 2020 05:23:50 GMT
 - request:
     method: get
     uri: https://api.spotify.com/v1/me
@@ -205,7 +85,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Date:
-      - Wed, 29 Jul 2020 04:41:48 GMT
+      - Wed, 29 Jul 2020 05:23:49 GMT
       Server:
       - envoy
       Via:
@@ -223,10 +103,10 @@ http_interactions:
             "message": "Only valid bearer authentication supported"
           }
         }
-  recorded_at: Wed, 29 Jul 2020 04:41:48 GMT
+  recorded_at: Wed, 29 Jul 2020 05:23:50 GMT
 - request:
     method: get
-    uri: http://localhost:4567/zipradius?radius=15&zip=61109
+    uri: http://localhost:4567/zipradius?radius=15&zip=80126
     body:
       encoding: US-ASCII
       string: ''
@@ -245,7 +125,7 @@ http_interactions:
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
-      - '150'
+      - '460'
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
@@ -258,11 +138,11 @@ http_interactions:
       - thin
     body:
       encoding: UTF-8
-      string: '611096110461125611266110261016611056110661110611126102061107610526108461108610436111461131611306113261049611036110160146610886111161010610086012961115'
-  recorded_at: Wed, 29 Jul 2020 04:41:49 GMT
+      string: '8012680163801228013080124801618012980120801218011280166801608016580155801318011180125801288011380237801508026380151801108012380108802368022280210802318020880250098678016280044800468023580224800148024680015801278022380209802478021980134802278026280243802718004180012802308020680232800138010980203802208021880016802268025680259802918028180273802448026180017802648027480290802048029380299800408001080265802578029480201802488004780465802058020280214802288020780225'
+  recorded_at: Wed, 29 Jul 2020 05:23:50 GMT
 - request:
     method: get
-    uri: http://localhost:4567/zipradius?radius=5&zip=80126
+    uri: http://localhost:4567/zipradius?radius=15&zip=80126
     body:
       encoding: US-ASCII
       string: ''
@@ -281,7 +161,7 @@ http_interactions:
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
-      - '45'
+      - '460'
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
@@ -294,6 +174,42 @@ http_interactions:
       - thin
     body:
       encoding: UTF-8
-      string: '801268016380122801308012480161801298012080121'
-  recorded_at: Wed, 29 Jul 2020 04:43:12 GMT
+      string: '8012680163801228013080124801618012980120801218011280166801608016580155801318011180125801288011380237801508026380151801108012380108802368022280210802318020880250098678016280044800468023580224800148024680015801278022380209802478021980134802278026280243802718004180012802308020680232800138010980203802208021880016802268025680259802918028180273802448026180017802648027480290802048029380299800408001080265802578029480201802488004780465802058020280214802288020780225'
+  recorded_at: Wed, 29 Jul 2020 05:25:08 GMT
+- request:
+    method: get
+    uri: http://localhost:4567/zipradius?radius=15&zip=80126
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/html;charset=utf-8
+      Content-Length:
+      - '460'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      Connection:
+      - keep-alive
+      Server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '8012680163801228013080124801618012980120801218011280166801608016580155801318011180125801288011380237801508026380151801108012380108802368022280210802318020880250098678016280044800468023580224800148024680015801278022380209802478021980134802278026280243802718004180012802308020680232800138010980203802208021880016802268025680259802918028180273802448026180017802648027480290802048029380299800408001080265802578029480201802488004780465802058020280214802288020780225'
+  recorded_at: Wed, 29 Jul 2020 05:25:08 GMT
 recorded_with: VCR 6.0.0
