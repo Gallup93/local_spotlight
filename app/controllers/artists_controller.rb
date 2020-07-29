@@ -32,8 +32,11 @@ class ArtistsController < ApplicationController
 
   def index
     zipcodes = current_user.find_zipcodes_and_radius(session[:temp_zip], session[:radius])
-
-    @artists = artists_nearby(zipcodes)
+    if
+      @artists = artists_nearby(zipcodes)
+    else
+      @artists = Artist.all
+    end
   end
 
   def show
