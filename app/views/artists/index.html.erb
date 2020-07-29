@@ -18,7 +18,7 @@
 <h1 class="artist-header"><%= link_to display_artist.name, artist_path(display_artist.id) %></h1>
 
 <% if !current_user.favorited?(current_user.id, display_artist.id) %>
-  <h3 class="fav-link"> <%= link_to "FAV", "/favorites/#{display_artist.id}/new" %>  </h3>  </br>
+  <h3 class="fav-link"> <%= link_to "Add Artist to Favorites", "/favorites/#{display_artist.id}/new" %>  </h3>  </br>
 <% end %>
 
 <section align="center">
