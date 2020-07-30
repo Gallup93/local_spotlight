@@ -50,4 +50,8 @@ class ApplicationController < ActionController::Base
       "No listed genres"
     end
   end
+
+  def favorite_artist(artist_id)
+    UserArtist.create(user_id: current_user.id, artist_id: artist_id)
+  end
 end
