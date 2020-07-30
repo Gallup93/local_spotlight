@@ -1,0 +1,151 @@
+@import "bootstrap";
+
+
+html,
+body {
+  background-image: url("lighter_background.jpg");
+  background-size: cover;
+  
+}
+
+.topnav {
+   overflow: hidden;
+   background-color: #002244;
+ }
+
+ .topnav a {
+   float: left;
+   color: #f2f2f2;
+   text-align: center;
+   padding: 14px 16px;
+   text-decoration: none;
+   font-size: 17px;
+ }
+
+ .topnav a:hover {
+   background-color: #17BEBB;
+   color: black;
+ }
+
+ h1 {color:white;}
+ h2 {color:white;}
+ h3 {color:white;}
+ h4 {color: white;}
+ p {color: white;}
+
+
+
+ .scroll_bar{height:500px;
+             overflow:auto;}
+
+
+/* Split the screen in half */
+.split {
+  height: 100%;
+  width: 65%;
+  position: fixed;
+  z-index: 1;
+  top: 10;
+  overflow-x: hidden;
+  padding-top: 20px;
+
+}
+
+  .show_page_split {
+  height: 100%;
+  width: 65%;
+  position: absolute;
+  z-index: 1;
+  top: 10;
+  overflow-x: hidden;
+  padding-top: 20px;
+
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+}
+
+.notice {
+  color:red
+}
+
+.show_left {
+  left: 0;
+}
+
+.show_right{
+  right: 0;
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.show_page_centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.show_page_centered_right {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.show_page_centered_left {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.grid-container{
+  display: grid;
+  grid-template-columns: max-content;
+  grid-template-rows: auto;
+  grid-gap: 30px;
+
+ }
+
+ .form{
+  color: white
+ }
+ .grid-item{
+  background: rgba(211,211,211, .35);
+  padding: 20px;
+  border: solid;
+  border-radius: 12px;
+  border-color: black;
+  text-align: center;
+ }
+
+  .item {
+    opacity: 100;
+  }
+
+  .element {
+	text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}

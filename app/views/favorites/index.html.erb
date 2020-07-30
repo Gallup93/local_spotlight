@@ -1,12 +1,15 @@
 <%=flash[:success] %>
+<br><br>
 <div align="center" class="favorite-bands">
   <%if @favorite_artists.length >= 1%>
     <%@favorite_artists.each do |favorite|%>
       <ul style="list-style: none;" class=<%="artist-#{favorite.artist_id}"%>>
         <h4><li><%=link_to favorite.artist.name, artist_path(favorite.artist.id)%> </li></h4>
-        <li><%=favorite.artist.city%> </li>
-        <li><%=favorite.artist.state%> </li>
-        <li><%=favorite.artist.zipcode%> </li>
+        <div class="form">
+          <li><%=favorite.artist.city%> </li>
+          <li><%=favorite.artist.state%> </li>
+          <li><%=favorite.artist.zipcode%> </li>
+        </div>
         <li class="delete-fav-link"> <%= button_to "Remove Favorite", "/favorites/#{favorite.id}/delete", method: :get %>  </li>  </br>
       </ul>
     <%end%>

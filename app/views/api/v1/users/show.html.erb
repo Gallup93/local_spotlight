@@ -1,23 +1,32 @@
+  <div class="split left">
+    <div class="centered">
+      <section class="user-info">
+        <h2>Hello, <%= current_user.username %></h2>
+          <ul>
+            <h4><li>Your current zipcode: <%= current_user.zipcode %></li><h4>
+          </ul>
+      </section>
+    </div>
+  </div>
 
-<section class="user-info">
-  <h2>Hello, <%= current_user.username %></h2>
-  <ul>
-    <li>Your current zipcode: <%= current_user.zipcode %></li>
-  </ul>
-</section>
+  <div class="split right">
+    <div class="centered">
+      <section class="favorite-artists">
+        <h2>Favorites:</h2>
+        <ul>
+          <% if @favorites == [] %>
+            <p><li>No Favorite Artists... yet</li><p>
+          <% else %>
+            <% @favorites.each do |favorite| %>
+            <div class= <%= "artist-#{favorite.artist_id}"%> >
+              <% name = favorite.get_name_by_id(favorite.artist_id) %>
+                <h3><li> <%= link_to "#{name}", "/artists/#{favorite.artist_id}"%> </li></h3>
+              <% end %>
+            <% end %>
+            </div>
+        </ul>
+      </section>
+    </div>
+</div>
 
-<section class="favorite-artists">
-  <h2>Favorites:</h2>
-  <ul>
-    <% if @favorites == [] %>
-      <li>No Favorite Artists... yet</li>
-    <% else %>
-      <% @favorites.each do |favorite| %>
-      <div class= <%= "artist-#{favorite.artist_id}"%> >
-        <% name = favorite.get_name_by_id(favorite.artist_id) %>
-          <li> <%= link_to "#{name}", "/artists/#{favorite.artist_id}"%> </li>
-        <% end %>
-      <% end %>
-      </div>
-  </ul>
-</section>
+

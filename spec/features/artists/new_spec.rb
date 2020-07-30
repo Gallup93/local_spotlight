@@ -34,5 +34,31 @@ RSpec.describe "As a user" do
       end
 
       expect(page).to have_css('.player')
+
+      visit '/api/v1/dashboard'
+
+      click_on "Add New Artist"
+
+      expect(current_path).to eq(new_artist_path)
+
+      fill_in :spotify_id, with: "1Apw9xiab11PyZLo6YeUoJ"
+      fill_in :description, with: "This better raise an error"
+      fill_in :zipcode, with: 00000
+
+      click_on("Add Artist")
+
+      expect(page).to have_content("Zipcode does not exist.")
+
+      expect(current_path).to eq(new_artist_path)
+
+      fill_in :spotify_id, with: "1LB8qB5BPb3MHQrfkvifXU"
+      fill_in :description, with: "This better raise an error"
+      fill_in :zipcode, with: 8-218
+
+      click_on("Add Artist")
+
+      expect(page).to have_content("This Artist already exists in the database.")
+
+      expect(current_path).to eq(new_artist_path)
     end
   end
