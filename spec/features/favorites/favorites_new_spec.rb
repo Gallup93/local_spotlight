@@ -32,21 +32,18 @@ RSpec.describe "Users can add a favorite" do
 
       visit "/artists"
 
-      within ".fav-link" do
-        click_link "Add Artist to Favorites"
-      end
-
+      
+      click_link "Add Artist to Favorites"
+      
       expect(current_path).to eq("/artists")
       expect(page).to have_content("#{@artist1.name} has been added to your favorites")
 
       expect(page).to have_link("#{@artist2.name}")
 
       click_link "#{@artist3.name}"
-
-      within ".fav-link" do
-        click_link "Add Artist to Favorites"
-      end
-
+    
+      click_link "Add Artist to Favorites"
+      
       expect(page).to have_content("#{@artist3.name} has been added to your favorites")
 
       visit "/favorites"
@@ -55,7 +52,7 @@ RSpec.describe "Users can add a favorite" do
       expect(page).to have_content(@artist3.name)
     end
 
-    it "wont display 'FAV' link if artist is already facortied", :vcr do
+    it "wont display 'FAV' link if artist is already favorited", :vcr do
       @user1 = User.create(username: "Music McMusic", email: "music@hotmail.com", zipcode: "80210", token: ENV['SPOTIFY_TEMP_TOKEN'])
       @artist1 = Artist.create(followers: 6565, name: "Colfax Speed Queen", zipcode: "80126", spotify_id: "3p9nYbFprckRkRxuCFVQcx", city: "Denver", state: "CO", genre: ["garage", "punk"])
       @artist2 = Artist.create(followers: 6565, name: "Joel Ansett", zipcode: "80126", spotify_id: "49IjdVEbQcukWy36sdRMzl", city: "Denver", state: "CO", genre: ["indie", "pop"])
@@ -96,11 +93,9 @@ RSpec.describe "Users can add a favorite" do
       expect(current_path).to eq("/api/v1/dashboard")
 
       visit "/artists"
-
-      within ".fav-link" do
-        click_link "Add Artist to Favorites"
-      end
-
+   
+      click_link "Add Artist to Favorites"
+      
       expect(current_path).to eq("/artists")
       expect(page).to have_content("#{@artist1.name} has been added to your favorites")
       expect(page).to_not have_link("Add Artist to Favorites")
