@@ -3,7 +3,6 @@ class Api::V1::UsersController < ApplicationController
     body = {
       grant_type: "authorization_code",
       code: params[:code],
-      redirect_uri: 'http://localhost:3000/api/v1/user',
       client_id: ENV['SPOTIFY_CLIENT_ID'],
       client_secret: ENV['SPOTIFY_CLIENT_SECRET']
     }
