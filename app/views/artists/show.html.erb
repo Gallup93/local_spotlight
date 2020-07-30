@@ -27,9 +27,9 @@
       <section class="player", align="center">
           <%if params[:new_album] %>
               <ul>
-                <h4>Album</h3>
-                  <%=button_to "Top Tracks", artist_path(@artist.id), method: :get%><br>
-                <iframe src=<%="https://open.spotify.com/embed/album/#{params[:new_album]}"%> width="400" height="480" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe><br>
+                <h1>Album</h1> 
+                <%=button_to "Top Tracks", artist_path(@artist.id), method: :get%><br>
+                <iframe src=<%="https://open.spotify.com/embed/album/#{params[:new_album]}"%> width="450" height="530" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe><br>
                 <br><br><br>
               </ul>   
           <%else%>
