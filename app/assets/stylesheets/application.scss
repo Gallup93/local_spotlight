@@ -73,7 +73,9 @@ body {
   right: 0;
 }
 
-
+.notice {
+  color:red
+}
 
 .show_left {
   left: 0;
@@ -124,6 +126,9 @@ body {
 
  }
 
+ .form{
+  color: white
+ }
  .grid-item{
   background: rgba(211,211,211, .35);
   padding: 20px;
