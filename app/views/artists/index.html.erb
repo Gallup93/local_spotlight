@@ -23,9 +23,9 @@
 
   <h1 class="artist-header"><%= link_to display_artist.name, artist_path(display_artist.id) %></h1>
 
-  <% if !current_user.favorited?(current_user.id, display_artist.id) %>
-    <h3 class="fav-link"> <%= button_to "Add Artist to Favorites", "/favorites/#{display_artist.id}/new", method: :get %>  </h3>  </br>
-  <% end %>
+    <h3 class="fav-link">
+      <%= link_to favorite_text, "/favorites/#{display_artist.id}/new", method: :post, id:'favorite-link', remote: true %>
+    </h3></br>
 
   <section align="center">
     <iframe  src=<%="https://open.spotify.com/embed/artist/#{display_artist.spotify_id}"%> width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>

@@ -4,10 +4,17 @@ class FavoritesController < ApplicationController
   end
 
   def new
-    if UserArtist.create(user_id: current_user[:id], artist_id: params["id"])
-      flash[:success] = "#{find_artist_by_id(params["id"]).name} has been added to your favorites"
-      redirect_to request.referrer
-      #look at fixing the refresh problem with JavaScript  
+    favorite = UserArtist.where(user_id: current_user.id, artist_id: params[:id])
+    if favorite == []
+      UserArtist.create(user_id: current_user.id, artist_id: params[:id])
+      @favorite_exists = true
+    else
+      favorite.destroy_all
+      @favorite_exists = false
+    end
+    respond_to do |format|
+      format.html {}
+      format.js {}
     end
   end
 
