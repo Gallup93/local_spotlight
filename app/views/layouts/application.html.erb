@@ -18,9 +18,15 @@
         <%= link_to "Add New Artist", "/artists/new" %>
         <%= link_to "Preferences", "/api/v1/preferences" %>
         <%= link_to "Logout", "/logout"%>
-        
+
       <% end %>
     </nav>
+
+  <% flash.each do |name, msg| %>
+   <div class= "<%=name%>-flash">
+     <p><%= msg %></p>
+   </div>
+ <% end %>
     <%= yield %>
   </body>
 </html>
