@@ -33,7 +33,7 @@ RSpec.describe "Users can add a favorite" do
       visit "/artists"
 
       within ".fav-link" do
-        click_link "Add Artist to Favorites"
+        click_button "Add Artist to Favorites"
       end
 
       expect(current_path).to eq("/artists")
@@ -41,10 +41,10 @@ RSpec.describe "Users can add a favorite" do
 
       expect(page).to have_link("#{@artist2.name}")
 
-      click_link "#{@artist3.name}"
+      click_button "#{@artist3.name}"
 
       within ".fav-link" do
-        click_link "Add Artist to Favorites"
+        click_button "Add Artist to Favorites"
       end
 
       expect(page).to have_content("#{@artist3.name} has been added to your favorites")
@@ -98,14 +98,14 @@ RSpec.describe "Users can add a favorite" do
       visit "/artists"
 
       within ".fav-link" do
-        click_link "Add Artist to Favorites"
+        click_button "Add Artist to Favorites"
       end
 
       expect(current_path).to eq("/artists")
       expect(page).to have_content("#{@artist1.name} has been added to your favorites")
       expect(page).to_not have_link("Add Artist to Favorites")
 
-      click_link "#{@artist3.name}"
+      click_button "#{@artist3.name}"
 
       expect(page).to have_link("Add Artist to Favorites")
     end
