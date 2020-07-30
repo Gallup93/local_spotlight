@@ -4,7 +4,8 @@ class User < ApplicationRecord
 
   def find_zipcodes_and_radius(zip, radius)
     radius = radius.delete(" Miles")
-    conn = Faraday.new("http://localhost:4567")
+    conn = Faraday.new("https://frozen-sierra-74026.herokuapp.com/")
+    # conn = Faraday.new("http://localhost:4567")
     response = conn.get("/zipradius?radius=#{radius}&zip=#{zip}")
   end
 

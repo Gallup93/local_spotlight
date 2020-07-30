@@ -31,9 +31,8 @@ RSpec.describe "Users can delete a favorite" do
 
       visit "/artists"
 
-      within ".fav-link" do
-        click_link "FAV"
-      end
+      click_on "Add Artist to Favorites"
+      
       expect(current_path).to eq("/artists")
       artist = Artist.first
       expect(page).to have_content("#{artist.name} has been added to your favorites")
@@ -41,9 +40,9 @@ RSpec.describe "Users can delete a favorite" do
       expect(page).to have_link("#{@artist2.name}")
       click_on("#{@artist3.name}")
 
-      within ".fav-link" do
-        click_link "FAV"
-      end
+     
+      click_on "Add Artist to Favorites"
+     
 
       expect(page).to have_content("#{@artist3.name} has been added to your favorites")
 
