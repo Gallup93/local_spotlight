@@ -10,8 +10,8 @@
         <%= label_tag "Need a change?" %><br>
         <%= text_field_tag :zipcode, session[:temp_zip] %><br>
         <%= label_tag "Narrow or expand your search radius" %><br>
-        <%= select_tag(:radius, options_for_select(radius, session[:radius])) %><br>
-        <%= submit_tag "Explore" %><br>
+        <p1><%= select_tag(:radius, options_for_select(radius, session[:radius])) %></p1><br>
+        <p1><%= submit_tag "Explore" %></p1><br>
       <% end %>
     </section>
   </div>
