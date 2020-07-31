@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'favorites/:id/delete', to: 'favorites#destroy'
 
   get '/favorites', to: 'favorites#index'
-  get 'favorites/:id/new', to: 'favorites#new'
+  post 'favorites/:id/new', to: 'favorites#new'
 
   namespace :api do
     namespace :v1 do
