@@ -153,6 +153,18 @@ body {
   border-color: black;
   text-align: center;
  }
+ 
+ .index-grid-item{
+  background: rgba(211,211,211, .35);
+  padding: 20px;
+  border: solid;
+  border-radius: 8px;
+  border-color: black, .5;
+  text-align: center;
+  // grid-template-columns: max-content;
+  grid-template-rows: min-content;
+
+ }
 
  .index-grid-item{
   background: rgba(211,211,211, .35);
@@ -194,3 +206,4 @@ body {
    margin-left: auto;
    margin-right: auto;
 }
+

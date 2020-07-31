@@ -1,5 +1,7 @@
 <%=flash[:success] %>
+
 <h1 align="center" class="preference-header" style='color:white'>Currently browsing Artists within <%= session[:radius]%> of Zipcode: <%= session[:temp_zip] %></h1>
+
 
 <section align="center">
   <div class="form">
@@ -51,9 +53,8 @@
                   <%= link_to artist.name, artists_path(:new_artist => artist.id) %></br>
                 </div>
               </section>
-            <%end %>
+            <% end %>
           </section>
-
         </div>
       </div>
     </div>
