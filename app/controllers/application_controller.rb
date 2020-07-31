@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :find_artist_by_id
   helper_method :artists_nearby
+  helper_method :favorite_text
 
   def artists_nearby(zipcodes)
     z = zipcodes.env.response_body
@@ -45,5 +46,9 @@ class ApplicationController < ActionController::Base
     else
       "No listed genres"
     end
+  end
+
+  def favorite_text
+    return @favorite_exists ? "Unfavorite" : "Favorite"
   end
 end

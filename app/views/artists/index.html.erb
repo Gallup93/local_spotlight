@@ -30,10 +30,11 @@
             <% display_artist = find_artist_by_id(params[:new_artist].to_i) %>
           <% end %>
         <h1 class="artist-header"><%= link_to display_artist.name, artist_path(display_artist.id) %></h1>
-        <% if !current_user.favorited?(current_user.id, display_artist.id) %>
-          <h3 class="fav-link"> <%= link_to "Add Artist to Favorites", "/favorites/#{display_artist.id}/new" %>  </h3>  </br>
-        <% end %>
       </section>
+
+    <h3 class="fav-link">
+      <%= link_to favorite_text, "/favorites/#{display_artist.id}/new", method: :post, id:'favorite-link', remote: true %>
+    </h3></br>
 
 
       <div class="row">

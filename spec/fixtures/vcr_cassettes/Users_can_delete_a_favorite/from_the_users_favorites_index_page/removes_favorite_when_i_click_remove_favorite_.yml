@@ -21,11 +21,11 @@ http_interactions:
       message: Bad Request
     headers:
       Date:
-      - Wed, 29 Jul 2020 05:11:13 GMT
+      - Thu, 30 Jul 2020 21:04:14 GMT
       Content-Type:
       - application/json
       Set-Cookie:
-      - __Host-device_id=AQC5hZEN_jBA5fGeeacAhNAWd6psfZNvShxIIzN9WnRj8xQe9e9xPL1Js0bj7I0UmaWLQWOLDSPcaujSb0vemn-0l7hzdWJkY9U;Version=1;Path=/;Max-Age=2147483647;Secure;HttpOnly;SameSite=Lax
+      - __Host-device_id=AQAx1ll4VnvoFUO5ZyKuEL4FTzvp4Sn-ORZK2sM4kxxXMsvBDSJ5nRo4S2_oIw26fzgtG-dGHtWVk77TCMfBz8WWkbicC8JvYqM;Version=1;Path=/;Max-Age=2147483647;Secure;HttpOnly;SameSite=Lax
       Server:
       - envoy
       Strict-Transport-Security:
@@ -43,7 +43,7 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: '{"error":"invalid_request","error_description":"code must be supplied"}'
-  recorded_at: Wed, 29 Jul 2020 05:11:13 GMT
+  recorded_at: Thu, 30 Jul 2020 21:04:14 GMT
 - request:
     method: get
     uri: https://api.spotify.com/v1/me
@@ -85,7 +85,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Date:
-      - Wed, 29 Jul 2020 05:11:13 GMT
+      - Thu, 30 Jul 2020 21:04:14 GMT
       Server:
       - envoy
       Via:
@@ -103,14 +103,16 @@ http_interactions:
             "message": "Only valid bearer authentication supported"
           }
         }
-  recorded_at: Wed, 29 Jul 2020 05:11:13 GMT
+  recorded_at: Thu, 30 Jul 2020 21:04:14 GMT
 - request:
     method: get
-    uri: http://localhost:4567/zipradius?radius=15&zip=80210
+    uri: https://api.spotify.com/v1/artists/3p9nYbFprckRkRxuCFVQcx/albums
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      Authorization:
+      - Bearer BQASvvaPxno6FtvnxdQYx4kni1AoYcBSIzw8AvPareQQvjwml90wgOtKUDjfVI2BGcVxf2h_3zV-udBHm2SSE6TZW4KgcTcI5ckVsNMfOIz4EC40Ys8cYPd869iVpgNhspukeLE_vMsZsWgGXlCSlFv1clJhMrmLVhwlG56XakQRw6drUk7u2O6Kju0VdnAx
       User-Agent:
       - Faraday v1.0.1
       Accept-Encoding:
@@ -123,289 +125,237 @@ http_interactions:
       message: OK
     headers:
       Content-Type:
-      - text/html;charset=utf-8
-      Content-Length:
-      - '610'
-      X-Xss-Protection:
-      - 1; mode=block
+      - application/json; charset=utf-8
+      Cache-Control:
+      - public, max-age=72493
+      X-Robots-Tag:
+      - noindex, nofollow
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version,
+        X-Cloud-Trace-Context
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS, PUT, DELETE, PATCH
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Max-Age:
+      - '604800'
+      Strict-Transport-Security:
+      - max-age=31536000
       X-Content-Type-Options:
       - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      Connection:
-      - keep-alive
-      Server:
-      - thin
-    body:
-      encoding: UTF-8
-      string: '8021080208802508022280113802098015109867801508024680223802628011080271802438022480263802068020380218802198023780236802318012180256802598029180261802448027380281802208016580264802748029080293802308029980161802478026580257802948016080166802018020480248802058020280120801118020780123802358022680214802278004080122800448023280211800418001280010800148021680155802128012680128802258026680112802388004580217800348021580129801628022180163800468004280130800178000280037802288003380015801248004780001800138001180003800308023980024801258000480229802608041980402800368003580006801278046580131804018003180453800188001680640'
-  recorded_at: Wed, 29 Jul 2020 05:12:27 GMT
-- request:
-    method: get
-    uri: http://localhost:4567/zipradius?radius=15&zip=80210
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.0.1
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - text/html;charset=utf-8
-      Content-Length:
-      - '610'
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      Connection:
-      - keep-alive
-      Server:
-      - thin
-    body:
-      encoding: UTF-8
-      string: '8021080208802508022280113802098015109867801508024680223802628011080271802438022480263802068020380218802198023780236802318012180256802598029180261802448027380281802208016580264802748029080293802308029980161802478026580257802948016080166802018020480248802058020280120801118020780123802358022680214802278004080122800448023280211800418001280010800148021680155802128012680128802258026680112802388004580217800348021580129801628022180163800468004280130800178000280037802288003380015801248004780001800138001180003800308023980024801258000480229802608041980402800368003580006801278046580131804018003180453800188001680640'
-  recorded_at: Wed, 29 Jul 2020 05:12:27 GMT
-- request:
-    method: get
-    uri: http://localhost:4567/zipradius?radius=15&zip=80210
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.0.1
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - text/html;charset=utf-8
-      Content-Length:
-      - '610'
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      Connection:
-      - keep-alive
-      Server:
-      - thin
-    body:
-      encoding: UTF-8
-      string: '8021080208802508022280113802098015109867801508024680223802628011080271802438022480263802068020380218802198023780236802318012180256802598029180261802448027380281802208016580264802748029080293802308029980161802478026580257802948016080166802018020480248802058020280120801118020780123802358022680214802278004080122800448023280211800418001280010800148021680155802128012680128802258026680112802388004580217800348021580129801628022180163800468004280130800178000280037802288003380015801248004780001800138001180003800308023980024801258000480229802608041980402800368003580006801278046580131804018003180453800188001680640'
-  recorded_at: Wed, 29 Jul 2020 05:12:28 GMT
-- request:
-    method: get
-    uri: http://localhost:4567/zipradius?radius=15&zip=80210
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.0.1
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - text/html;charset=utf-8
-      Content-Length:
-      - '610'
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      Connection:
-      - keep-alive
-      Server:
-      - thin
-    body:
-      encoding: UTF-8
-      string: '8021080208802508022280113802098015109867801508024680223802628011080271802438022480263802068020380218802198023780236802318012180256802598029180261802448027380281802208016580264802748029080293802308029980161802478026580257802948016080166802018020480248802058020280120801118020780123802358022680214802278004080122800448023280211800418001280010800148021680155802128012680128802258026680112802388004580217800348021580129801628022180163800468004280130800178000280037802288003380015801248004780001800138001180003800308023980024801258000480229802608041980402800368003580006801278046580131804018003180453800188001680640'
-  recorded_at: Wed, 29 Jul 2020 05:12:28 GMT
-- request:
-    method: get
-    uri: https://frozen-sierra-74026.herokuapp.com/zipradius?radius=15&zip=80210
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.0.1
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
       Date:
-      - Wed, 29 Jul 2020 19:20:47 GMT
-      Connection:
-      - keep-alive
-      Content-Type:
-      - text/html;charset=utf-8
-      Content-Length:
-      - '610'
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
+      - Thu, 30 Jul 2020 21:04:16 GMT
       Server:
-      - thin
+      - envoy
       Via:
-      - 1.1 vegur
+      - HTTP/2 edgeproxy, 1.1 google
+      Alt-Svc:
+      - clear
+      Transfer-Encoding:
+      - chunked
     body:
-      encoding: UTF-8
-      string: '8021080208802508022280113802098015109867801508024680223802628011080271802438022480263802068020380218802198023780236802318012180256802598029180261802448027380281802208016580264802748029080293802308029980161802478026580257802948016080166802018020480248802058020280120801118020780123802358022680214802278004080122800448023280211800418001280010800148021680155802128012680128802258026680112802388004580217800348021580129801628022180163800468004280130800178000280037802288003380015801248004780001800138001180003800308023980024801258000480229802608041980402800368003580006801278046580131804018003180453800188001680640'
-  recorded_at: Wed, 29 Jul 2020 19:20:47 GMT
-- request:
-    method: get
-    uri: https://frozen-sierra-74026.herokuapp.com/zipradius?radius=15&zip=80210
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.0.1
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Wed, 29 Jul 2020 19:20:46 GMT
-      Connection:
-      - keep-alive
-      Content-Type:
-      - text/html;charset=utf-8
-      Content-Length:
-      - '610'
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      Server:
-      - thin
-      Via:
-      - 1.1 vegur
-    body:
-      encoding: UTF-8
-      string: '8021080208802508022280113802098015109867801508024680223802628011080271802438022480263802068020380218802198023780236802318012180256802598029180261802448027380281802208016580264802748029080293802308029980161802478026580257802948016080166802018020480248802058020280120801118020780123802358022680214802278004080122800448023280211800418001280010800148021680155802128012680128802258026680112802388004580217800348021580129801628022180163800468004280130800178000280037802288003380015801248004780001800138001180003800308023980024801258000480229802608041980402800368003580006801278046580131804018003180453800188001680640'
-  recorded_at: Wed, 29 Jul 2020 19:20:47 GMT
-- request:
-    method: get
-    uri: https://frozen-sierra-74026.herokuapp.com/zipradius?radius=15&zip=80210
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.0.1
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Wed, 29 Jul 2020 19:20:47 GMT
-      Connection:
-      - keep-alive
-      Content-Type:
-      - text/html;charset=utf-8
-      Content-Length:
-      - '610'
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      Server:
-      - thin
-      Via:
-      - 1.1 vegur
-    body:
-      encoding: UTF-8
-      string: '8021080208802508022280113802098015109867801508024680223802628011080271802438022480263802068020380218802198023780236802318012180256802598029180261802448027380281802208016580264802748029080293802308029980161802478026580257802948016080166802018020480248802058020280120801118020780123802358022680214802278004080122800448023280211800418001280010800148021680155802128012680128802258026680112802388004580217800348021580129801628022180163800468004280130800178000280037802288003380015801248004780001800138001180003800308023980024801258000480229802608041980402800368003580006801278046580131804018003180453800188001680640'
-  recorded_at: Wed, 29 Jul 2020 19:20:48 GMT
-- request:
-    method: get
-    uri: https://frozen-sierra-74026.herokuapp.com/zipradius?radius=15&zip=80210
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.0.1
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Wed, 29 Jul 2020 19:20:48 GMT
-      Connection:
-      - keep-alive
-      Content-Type:
-      - text/html;charset=utf-8
-      Content-Length:
-      - '610'
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      Server:
-      - thin
-      Via:
-      - 1.1 vegur
-    body:
-      encoding: UTF-8
-      string: '8021080208802508022280113802098015109867801508024680223802628011080271802438022480263802068020380218802198023780236802318012180256802598029180261802448027380281802208016580264802748029080293802308029980161802478026580257802948016080166802018020480248802058020280120801118020780123802358022680214802278004080122800448023280211800418001280010800148021680155802128012680128802258026680112802388004580217800348021580129801628022180163800468004280130800178000280037802288003380015801248004780001800138001180003800308023980024801258000480229802608041980402800368003580006801278046580131804018003180453800188001680640'
-  recorded_at: Wed, 29 Jul 2020 19:20:48 GMT
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "href" : "https://api.spotify.com/v1/artists/3p9nYbFprckRkRxuCFVQcx/albums?offset=0&limit=20&include_groups=album,single,compilation,appears_on",
+          "items" : [ {
+            "album_group" : "album",
+            "album_type" : "album",
+            "artists" : [ {
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/artist/3p9nYbFprckRkRxuCFVQcx"
+              },
+              "href" : "https://api.spotify.com/v1/artists/3p9nYbFprckRkRxuCFVQcx",
+              "id" : "3p9nYbFprckRkRxuCFVQcx",
+              "name" : "Colfax Speed Queen",
+              "type" : "artist",
+              "uri" : "spotify:artist:3p9nYbFprckRkRxuCFVQcx"
+            } ],
+            "available_markets" : [ "AD", "AE", "AL", "AR", "AT", "AU", "BA", "BE", "BG", "BH", "BO", "BR", "BY", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HR", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "KZ", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MD", "ME", "MK", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "RS", "RU", "SA", "SE", "SG", "SI", "SK", "SV", "TH", "TN", "TR", "TW", "UA", "US", "UY", "VN", "XK", "ZA" ],
+            "external_urls" : {
+              "spotify" : "https://open.spotify.com/album/50gel3tXRhgh6VOuTYyKS0"
+            },
+            "href" : "https://api.spotify.com/v1/albums/50gel3tXRhgh6VOuTYyKS0",
+            "id" : "50gel3tXRhgh6VOuTYyKS0",
+            "images" : [ {
+              "height" : 640,
+              "url" : "https://i.scdn.co/image/ab67616d0000b273f2892be8c7580b4cd3a231c3",
+              "width" : 640
+            }, {
+              "height" : 300,
+              "url" : "https://i.scdn.co/image/ab67616d00001e02f2892be8c7580b4cd3a231c3",
+              "width" : 300
+            }, {
+              "height" : 64,
+              "url" : "https://i.scdn.co/image/ab67616d00004851f2892be8c7580b4cd3a231c3",
+              "width" : 64
+            } ],
+            "name" : "Dirty Mirror",
+            "release_date" : "2019-10-16",
+            "release_date_precision" : "day",
+            "total_tracks" : 11,
+            "type" : "album",
+            "uri" : "spotify:album:50gel3tXRhgh6VOuTYyKS0"
+          }, {
+            "album_group" : "album",
+            "album_type" : "album",
+            "artists" : [ {
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/artist/3p9nYbFprckRkRxuCFVQcx"
+              },
+              "href" : "https://api.spotify.com/v1/artists/3p9nYbFprckRkRxuCFVQcx",
+              "id" : "3p9nYbFprckRkRxuCFVQcx",
+              "name" : "Colfax Speed Queen",
+              "type" : "artist",
+              "uri" : "spotify:artist:3p9nYbFprckRkRxuCFVQcx"
+            } ],
+            "available_markets" : [ "AD", "AE", "AL", "AR", "AT", "AU", "BA", "BE", "BG", "BH", "BO", "BR", "BY", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HR", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "KZ", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MD", "ME", "MK", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "RS", "RU", "SA", "SE", "SG", "SI", "SK", "SV", "TH", "TN", "TR", "TW", "UA", "US", "UY", "VN", "XK", "ZA" ],
+            "external_urls" : {
+              "spotify" : "https://open.spotify.com/album/3P4bAnV6Oxvdh0aACbrI1N"
+            },
+            "href" : "https://api.spotify.com/v1/albums/3P4bAnV6Oxvdh0aACbrI1N",
+            "id" : "3P4bAnV6Oxvdh0aACbrI1N",
+            "images" : [ {
+              "height" : 640,
+              "url" : "https://i.scdn.co/image/ab67616d0000b273d1f8da1b3e9980f0cc5a81c0",
+              "width" : 640
+            }, {
+              "height" : 300,
+              "url" : "https://i.scdn.co/image/ab67616d00001e02d1f8da1b3e9980f0cc5a81c0",
+              "width" : 300
+            }, {
+              "height" : 64,
+              "url" : "https://i.scdn.co/image/ab67616d00004851d1f8da1b3e9980f0cc5a81c0",
+              "width" : 64
+            } ],
+            "name" : "Talk to Your Doctor",
+            "release_date" : "2016-11-11",
+            "release_date_precision" : "day",
+            "total_tracks" : 11,
+            "type" : "album",
+            "uri" : "spotify:album:3P4bAnV6Oxvdh0aACbrI1N"
+          }, {
+            "album_group" : "album",
+            "album_type" : "album",
+            "artists" : [ {
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/artist/3p9nYbFprckRkRxuCFVQcx"
+              },
+              "href" : "https://api.spotify.com/v1/artists/3p9nYbFprckRkRxuCFVQcx",
+              "id" : "3p9nYbFprckRkRxuCFVQcx",
+              "name" : "Colfax Speed Queen",
+              "type" : "artist",
+              "uri" : "spotify:artist:3p9nYbFprckRkRxuCFVQcx"
+            } ],
+            "available_markets" : [ "AD", "AE", "AL", "AR", "AT", "AU", "BA", "BE", "BG", "BH", "BO", "BR", "BY", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HR", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "KZ", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MD", "ME", "MK", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "RS", "RU", "SA", "SE", "SG", "SI", "SK", "SV", "TH", "TN", "TR", "TW", "UA", "US", "UY", "VN", "XK", "ZA" ],
+            "external_urls" : {
+              "spotify" : "https://open.spotify.com/album/7lmc7a2sQLCggEpAPISskC"
+            },
+            "href" : "https://api.spotify.com/v1/albums/7lmc7a2sQLCggEpAPISskC",
+            "id" : "7lmc7a2sQLCggEpAPISskC",
+            "images" : [ {
+              "height" : 640,
+              "url" : "https://i.scdn.co/image/ab67616d0000b273cffc5c7c17897f16fd0f7ea5",
+              "width" : 640
+            }, {
+              "height" : 300,
+              "url" : "https://i.scdn.co/image/ab67616d00001e02cffc5c7c17897f16fd0f7ea5",
+              "width" : 300
+            }, {
+              "height" : 64,
+              "url" : "https://i.scdn.co/image/ab67616d00004851cffc5c7c17897f16fd0f7ea5",
+              "width" : 64
+            } ],
+            "name" : "Satisfaction Intended",
+            "release_date" : "2013-06-26",
+            "release_date_precision" : "day",
+            "total_tracks" : 11,
+            "type" : "album",
+            "uri" : "spotify:album:7lmc7a2sQLCggEpAPISskC"
+          }, {
+            "album_group" : "single",
+            "album_type" : "single",
+            "artists" : [ {
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/artist/3p9nYbFprckRkRxuCFVQcx"
+              },
+              "href" : "https://api.spotify.com/v1/artists/3p9nYbFprckRkRxuCFVQcx",
+              "id" : "3p9nYbFprckRkRxuCFVQcx",
+              "name" : "Colfax Speed Queen",
+              "type" : "artist",
+              "uri" : "spotify:artist:3p9nYbFprckRkRxuCFVQcx"
+            } ],
+            "available_markets" : [ "AD", "AE", "AL", "AR", "AT", "AU", "BA", "BE", "BG", "BH", "BO", "BR", "BY", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HR", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "KZ", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MD", "ME", "MK", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "RS", "RU", "SA", "SE", "SG", "SI", "SK", "SV", "TH", "TN", "TR", "TW", "UA", "US", "UY", "VN", "XK", "ZA" ],
+            "external_urls" : {
+              "spotify" : "https://open.spotify.com/album/3hmukpRq6p7zAexgDHXPRP"
+            },
+            "href" : "https://api.spotify.com/v1/albums/3hmukpRq6p7zAexgDHXPRP",
+            "id" : "3hmukpRq6p7zAexgDHXPRP",
+            "images" : [ {
+              "height" : 640,
+              "url" : "https://i.scdn.co/image/ab67616d0000b2737b8ac9797cd149a7c1d1fd92",
+              "width" : 640
+            }, {
+              "height" : 300,
+              "url" : "https://i.scdn.co/image/ab67616d00001e027b8ac9797cd149a7c1d1fd92",
+              "width" : 300
+            }, {
+              "height" : 64,
+              "url" : "https://i.scdn.co/image/ab67616d000048517b8ac9797cd149a7c1d1fd92",
+              "width" : 64
+            } ],
+            "name" : "Human Fly",
+            "release_date" : "2019-02-18",
+            "release_date_precision" : "day",
+            "total_tracks" : 1,
+            "type" : "album",
+            "uri" : "spotify:album:3hmukpRq6p7zAexgDHXPRP"
+          }, {
+            "album_group" : "single",
+            "album_type" : "single",
+            "artists" : [ {
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/artist/3p9nYbFprckRkRxuCFVQcx"
+              },
+              "href" : "https://api.spotify.com/v1/artists/3p9nYbFprckRkRxuCFVQcx",
+              "id" : "3p9nYbFprckRkRxuCFVQcx",
+              "name" : "Colfax Speed Queen",
+              "type" : "artist",
+              "uri" : "spotify:artist:3p9nYbFprckRkRxuCFVQcx"
+            } ],
+            "available_markets" : [ "AD", "AE", "AL", "AR", "AT", "AU", "BA", "BE", "BG", "BH", "BO", "BR", "BY", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HR", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "KZ", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MD", "ME", "MK", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "RS", "RU", "SA", "SE", "SG", "SI", "SK", "SV", "TH", "TN", "TR", "TW", "UA", "US", "UY", "VN", "XK", "ZA" ],
+            "external_urls" : {
+              "spotify" : "https://open.spotify.com/album/0wRY57oKksUkwXibWAiadH"
+            },
+            "href" : "https://api.spotify.com/v1/albums/0wRY57oKksUkwXibWAiadH",
+            "id" : "0wRY57oKksUkwXibWAiadH",
+            "images" : [ {
+              "height" : 640,
+              "url" : "https://i.scdn.co/image/ab67616d0000b273beb2f3edb6bdfb7072355b06",
+              "width" : 640
+            }, {
+              "height" : 300,
+              "url" : "https://i.scdn.co/image/ab67616d00001e02beb2f3edb6bdfb7072355b06",
+              "width" : 300
+            }, {
+              "height" : 64,
+              "url" : "https://i.scdn.co/image/ab67616d00004851beb2f3edb6bdfb7072355b06",
+              "width" : 64
+            } ],
+            "name" : "Is This Now?",
+            "release_date" : "2018-10-31",
+            "release_date_precision" : "day",
+            "total_tracks" : 1,
+            "type" : "album",
+            "uri" : "spotify:album:0wRY57oKksUkwXibWAiadH"
+          } ],
+          "limit" : 20,
+          "next" : null,
+          "offset" : 0,
+          "previous" : null,
+          "total" : 5
+        }
+  recorded_at: Thu, 30 Jul 2020 21:04:16 GMT
 recorded_with: VCR 6.0.0
