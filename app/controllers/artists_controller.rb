@@ -49,6 +49,7 @@ class ArtistsController < ApplicationController
     @artist = Artist.find(params[:id])
     results = AlbumSearch.new
     @albums = results.albums(@artist, current_user.token)
+    
   end
 
   private
