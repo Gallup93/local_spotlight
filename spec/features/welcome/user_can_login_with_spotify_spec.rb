@@ -7,7 +7,9 @@ RSpec.describe "As a visitor" do
 
       expect(page).to have_link('Login with Spotify')
 
-      expect {click_link("Login with Spotify")}.to raise_error(ActionController::RoutingError)
+      within '#login' do
+        expect {click_link("Login with Spotify")}.to raise_error(ActionController::RoutingError)
+      end
     end
     it "can log out" do
       user = User.create(username: "Rocky McMountain", email: "LoveMusic303@aol.com", zipcode: "80128",  token: ENV['SPOTIFY_TEMP_TOKEN'])

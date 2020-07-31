@@ -1,5 +1,7 @@
 <%=flash[:success] %>
-<h1 align="center" class="preference-header">Currently browsing Artists within <%= session[:radius]%> of Zipcode: <%= session[:temp_zip] %></h1>
+
+<h1 align="center" class="preference-header" style='color:white'>Currently browsing Artists within <%= session[:radius]%> of Zipcode: <%= session[:temp_zip] %></h1>
+
 
 <section align="center">
   <div class="form">
@@ -36,14 +38,13 @@
       <%= link_to favorite_text, "/favorites/#{display_artist.id}/new", method: :post, id:'favorite-link', remote: true %>
     </h3></br>
 
-
       <div class="row">
         <div class="col-sm">
           <section align="center">
             <iframe  src=<%="https://open.spotify.com/embed/artist/#{display_artist.spotify_id}"%> width="500" height="580" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
           </section>
         </div>
-      
+
         <div class="col-sm">
           <section class="index_scroll_bar">
           <% @artists.each do |artist| %>
@@ -52,9 +53,8 @@
                   <%= link_to artist.name, artists_path(:new_artist => artist.id) %></br>
                 </div>
               </section>
-            <%end %>
+            <% end %>
           </section>
-          
         </div>
       </div>
     </div>
