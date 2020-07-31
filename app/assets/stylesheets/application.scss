@@ -5,7 +5,7 @@ html,
 body {
   background-image: url("lighter_background.jpg");
   background-size: cover;
-  
+
 }
 
 .topnav {
@@ -36,7 +36,15 @@ body {
 
 
  .scroll_bar{height:500px;
-             overflow:auto;}
+             overflow:auto;
+              border-radius: 12px;}
+
+.index_scroll_bar{height:580px;
+             overflow:auto;
+             border-radius: 8px;
+             border-color: black, .5;
+             border-style: solid;
+}
 
 
 /* Split the screen in half */
@@ -59,13 +67,12 @@ body {
   top: 10;
   overflow-x: hidden;
   padding-top: 20px;
-
 }
 
 /* Control the left side */
 .left {
   left: 0;
-  
+
 }
 
 /* Control the right side */
@@ -125,6 +132,15 @@ body {
   grid-gap: 30px;
 
  }
+ .index-grid-container{
+  display: grid;
+  grid-template-columns: max-content;
+  grid-template-rows: auto;
+  grid-gap: 10px;
+  background: rgba(211,211,211, .1);
+  border-radius: 12px;
+
+ }
 
  .form{
   color: white
@@ -138,14 +154,43 @@ body {
   text-align: center;
  }
 
+ .index-grid-item{
+  background: rgba(211,211,211, .35);
+  padding: 20px;
+  border: solid;
+  border-radius: 8px;
+  border-color: black, .5;
+  text-align: center;
+  // grid-template-columns: max-content;
+  grid-template-rows: min-content;
+
+ }
+
   .item {
     opacity: 100;
   }
 
   .element {
-	text-shadow:
+	  text-shadow:
 		-1px -1px 0 #000,
 		1px -1px 0 #000,
 		-1px 1px 0 #000,
 		1px 1px 0 #000;
+}
+
+.focus
+ {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+ }
+
+ .satellite {
+   position: relative;
+   top: 100px;
+   max-width: 13%;
+   height: auto;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
 }

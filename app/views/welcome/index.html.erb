@@ -1,2 +1,14 @@
-<h1>Welcome to Local Spotlight</h1>
+<%= render "/layouts/landing.html.erb"%>
 
+  <section>
+      <div class="focus">
+      </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+      $(document).mousemove(function(e){
+              var X = e.pageX;
+              var Y = e.pageY;
+              $('.focus').css('background','radial-gradient(circle at '+X+'px '+Y+'px, transparent, #000 40%)')
+            })
+    </script>

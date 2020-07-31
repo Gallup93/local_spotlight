@@ -1,9 +1,9 @@
   <div class="split left">
     <div class="centered">
       <section class="user-info">
-        <h2>Hello, <%= current_user.username %></h2>
+        <h2 style="color:white">Hello, <%= current_user.username %></h2>
           <ul>
-            <h4><li>Your current zipcode: <%= current_user.zipcode %></li><h4>
+            <h4 style="color:white"><li>Your current zipcode: <%= current_user.zipcode %></li><h4>
           </ul>
       </section>
     </div>
@@ -12,10 +12,10 @@
   <div class="split right">
     <div class="centered">
       <section class="favorite-artists">
-        <h2>Favorites:</h2>
+        <h2 style="color:white">Favorites:</h2>
         <ul>
           <% if @favorites == [] %>
-            <p><li>No Favorite Artists... yet</li><p>
+            <p style="color:white"><li>No Favorite Artists... yet</li><p>
           <% else %>
             <% @favorites.each do |favorite| %>
             <div class= <%= "artist-#{favorite.artist_id}"%> >
@@ -28,5 +28,3 @@
       </section>
     </div>
 </div>
-
-

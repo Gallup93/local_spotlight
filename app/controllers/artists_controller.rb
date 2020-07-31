@@ -32,11 +32,12 @@ class ArtistsController < ApplicationController
 
   def index
     zipcodes = current_user.find_zipcodes_and_radius(session[:temp_zip], session[:radius])
-    if @artists = artists_nearby(zipcodes)
+    artists = artists_nearby(zipcodes)
+    if !artists.empty?
+      @artists = artists
     else
       @artists = Artist.all
     end
-      
     if params[:new_artist]
       @favorite_exists = !UserArtist.where(user_id: current_user.id, artist_id: params[:new_artist]).empty?
     else
