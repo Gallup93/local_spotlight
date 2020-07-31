@@ -30,11 +30,11 @@
             <% display_artist = find_artist_by_id(params[:new_artist].to_i) %>
           <% end %>
         <h1 class="artist-header"><%= link_to display_artist.name, artist_path(display_artist.id) %></h1>
-        <% if !current_user.favorited?(current_user.id, display_artist.id) %>
-          <h3 class="fav-link"> <%= link_to "Add Artist to Favorites", "/favorites/#{display_artist.id}/new" %>  </h3>  </br>
-        <% end %>
       </section>
 
+    <h3 class="fav-link">
+      <%= link_to favorite_text, "/favorites/#{display_artist.id}/new", method: :post, id:'favorite-link', remote: true %>
+    </h3></br>
 
       <div class="row">
         <div class="col-sm">
@@ -42,7 +42,7 @@
             <iframe  src=<%="https://open.spotify.com/embed/artist/#{display_artist.spotify_id}"%> width="500" height="580" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
           </section>
         </div>
-      
+
         <div class="col-sm">
           <section class="index_scroll_bar">
           <% @artists.each do |artist| %>
@@ -53,7 +53,7 @@
               </section>
             <%end %>
           </section>
-          
+
         </div>
       </div>
     </div>
