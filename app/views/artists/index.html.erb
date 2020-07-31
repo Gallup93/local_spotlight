@@ -1,33 +1,61 @@
 <%=flash[:success] %>
-
-<h1 class="preference-header">Currently browsing Artists within <%= session[:radius]%> of Zipcode: <%= session[:temp_zip] %></h1>
-<section class="update-temp-zip">
-  <%= form_tag "/zipcode", method: :patch do %>
-    <%= label_tag "Need a change?" %><br>
-    <%= text_field_tag :zipcode, session[:temp_zip] %><br>
-    <%= label_tag "Narrow or expand your search radius" %><br>
-    <%= select_tag(:radius, options_for_select(radius, session[:radius])) %><br>
-    <%= submit_tag "Explore" %><br>
-  <% end %>
-</section>
-
-<% display_artist = @artists.first %>
-<% if params[:new_artist] %>
-  <% display_artist = find_artist_by_id(params[:new_artist].to_i) %>
-<% end %>
-<h1 class="artist-header"><%= link_to display_artist.name, artist_path(display_artist.id) %></h1>
-
-<% if !current_user.favorited?(current_user.id, display_artist.id) %>
-  <h3 class="fav-link"> <%= link_to "FAV", "/favorites/#{display_artist.id}/new" %>  </h3>  </br>
-<% end %>
+<h1 align="center" class="preference-header">Currently browsing Artists within <%= session[:radius]%> of Zipcode: <%= session[:temp_zip] %></h1>
 
 <section align="center">
-  <iframe  src=<%="https://open.spotify.com/embed/artist/#{display_artist.spotify_id}"%> width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+  <div class="form">
+    <section class="update-temp-zip">
+      <%= form_tag "/zipcode", method: :patch do %>
+        <%= label_tag "Need a change?" %><br>
+        <%= text_field_tag :zipcode, session[:temp_zip] %><br>
+        <%= label_tag "Narrow or expand your search radius" %><br>
+        <%= select_tag(:radius, options_for_select(radius, session[:radius])) %><br>
+        <%= submit_tag "Explore" %><br>
+      <% end %>
+    </section>
+  </div>
 </section>
-</br>
 
-<% @artists.each do |artist| %>
-  <section align="center" id=<%="artist-#{artist.id}"%>>
-    <%= link_to artist.name, artists_path(:new_artist => artist.id) %></br>
-  </section>
+<% if @artists == [] %>
+  <h1 class="notice" align="center"> At the moment there aren't any artists that meet your search criteria.<br>
+                                     Maybe it's a sign you should start a band.. </h1>
+<% else %>
+  <% display_artist = @artists.first %>
+  <% if params[:new_artist] %>
+    <% display_artist = find_artist_by_id(params[:new_artist].to_i) %>
+  <% end %>
+    <div class="container">
+      <section align="center">
+        <% display_artist = @artists.first %>
+          <% if params[:new_artist] %>
+            <% display_artist = find_artist_by_id(params[:new_artist].to_i) %>
+          <% end %>
+        <h1 class="artist-header"><%= link_to display_artist.name, artist_path(display_artist.id) %></h1>
+        <% if !current_user.favorited?(current_user.id, display_artist.id) %>
+          <h3 class="fav-link"> <%= link_to "Add Artist to Favorites", "/favorites/#{display_artist.id}/new" %>  </h3>  </br>
+        <% end %>
+      </section>
+
+
+      <div class="row">
+        <div class="col-sm">
+          <section align="center">
+            <iframe  src=<%="https://open.spotify.com/embed/artist/#{display_artist.spotify_id}"%> width="500" height="580" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          </section>
+        </div>
+      
+        <div class="col-sm">
+          <section class="index_scroll_bar">
+          <% @artists.each do |artist| %>
+              <section align="center" id=<%="artist-#{artist.id}"%>>
+                <div class="index-grid-item element index-font">
+                  <%= link_to artist.name, artists_path(:new_artist => artist.id) %></br>
+                </div>
+              </section>
+            <%end %>
+          </section>
+          
+        </div>
+      </div>
+    </div>
+   </div>
 <% end %>

@@ -5,7 +5,9 @@ html,
 body {
   background-image: url("lighter_background.jpg");
   background-size: cover;
+  
 }
+
 .topnav {
    overflow: hidden;
    background-color: #002244;
@@ -34,18 +36,27 @@ body {
 
 
  .scroll_bar{height:500px;
-             overflow:auto;}
+             overflow:auto;
+              border-radius: 12px;}
+ 
+.index_scroll_bar{height:580px;
+             overflow:auto;
+             border-radius: 8px;
+             border-color: black, .5;
+             border-style: solid;
+} 
 
 
 /* Split the screen in half */
 .split {
   height: 100%;
-  width: 50%;
+  width: 65%;
   position: fixed;
   z-index: 1;
   top: 10;
   overflow-x: hidden;
   padding-top: 20px;
+
 }
 
   .show_page_split {
@@ -67,7 +78,10 @@ body {
 /* Control the right side */
 .right {
   right: 0;
- 
+}
+
+.notice {
+  color:red
 }
 
 .show_left {
@@ -109,4 +123,71 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+}
+
+.grid-container{
+  display: grid;
+  grid-template-columns: max-content;
+  grid-template-rows: auto;
+  grid-gap: 30px;
+
+ }
+ .index-grid-container{
+  display: grid;
+  grid-template-columns: max-content;
+  grid-template-rows: auto;
+  grid-gap: 10px;
+  background: rgba(211,211,211, .1);
+  border-radius: 12px;
+
+ }
+
+ .form{
+  color: white
+ }
+ .grid-item{
+  background: rgba(211,211,211, .35);
+  padding: 20px;
+  border: solid;
+  border-radius: 12px;
+  border-color: black;
+  text-align: center;
+ }
+ 
+ .index-grid-item{
+  background: rgba(211,211,211, .35);
+  padding: 20px;
+  border: solid;
+  border-radius: 8px;
+  border-color: black, .5;
+  text-align: center;
+  // grid-template-columns: max-content;
+  grid-template-rows: min-content;
+
+ }
+
+  .item {
+    opacity: 100;
+  }
+
+  .element {
+	  text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}
+
+
+.background{
+  background:rgba(211,211,211, .09) ;
+}
+
+.index-font{
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
 }
