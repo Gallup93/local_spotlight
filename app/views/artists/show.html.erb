@@ -1,5 +1,4 @@
 <br>
-
 <section class="header">
     <div class="artist-name">
       <h3 style="color:white", align="center">Name: <%=@artist.name%></h3>
@@ -19,53 +18,45 @@
     <% end %>
   </div>
 </section>
-
-
-
-  <div class="show_page_split show_left">
-    <div class="show_page_centered_left">
-      <section class="player", align="center">
-          <%if params[:new_album] %>
-              <ul>
-                <h1 style="color:white">Album</h1>
-                <%=button_to "Top Tracks", artist_path(@artist.id), method: :get%><br>
-                <iframe src=<%="https://open.spotify.com/embed/album/#{params[:new_album]}"%> width="450" height="530" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe><br>
-                <br><br><br>
-              </ul>
-          <%else%>
-              <h4 style="color:white">Top Tracks</h3>
-                <iframe src=<%="https://open.spotify.com/embed/artist/#{@artist.spotify_id}"%> width="400" height="480" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+<div class="show_page_split show_left">
+  <div class="show_page_centered_left">
+    <section class="player", align="center">
+        <%if params[:new_album] %>
+            <ul>
+              <h1 style="color:white">Album</h1>
+              <%=button_to "Top Tracks", artist_path(@artist.id), method: :get%><br>
+              <iframe src=<%="https://open.spotify.com/embed/album/#{params[:new_album]}"%> width="450" height="530" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe><br>
               <br><br><br>
-          <%end%>
-      </section>
-    </div>
-  </div>
-
-  <br>
-
-
-
-
-  <div class="show_page_split show_right">
-    <div class="show_page_centered_right">
-      <section class="links", align="center">
-        <section class="grid-container">
-          <h1 style="color:white">Discography</h1>
-            <div class="scroll_bar">
-            <ul style="list-style-type:none;">
-              <%@albums.each do |album|%>
-                <div class="grid-item">
-                  <div class="element">
-                    <h4><li><%=album.name%></li><h4>
-                  </div>
-                  <div class="item">
-                    <%=link_to image_tag(album.cover, size: "200x200"), artist_path(@artist.id, :new_album => album.id)%>
-                  </div>
-                </div>
-              <%end%>
             </ul>
-          </div>
-        </section>
-      </section>
-    </div>
+        <%else%>
+            <h4 style="color:white">Top Tracks</h3>
+              <iframe src=<%="https://open.spotify.com/embed/artist/#{@artist.spotify_id}"%> width="400" height="480" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            <br><br><br>
+        <%end%>
+    </section>
   </div>
+</div>
+<br>
+<div class="show_page_split show_right">
+  <div class="show_page_centered_right">
+    <section class="links", align="center">
+      <section class="grid-container">
+        <h1 style="color:white">Discography</h1>
+          <div class="scroll_bar">
+          <ul style="list-style-type:none;">
+            <%@albums.each do |album|%>
+              <div class="grid-item">
+                <div class="element">
+                  <h4><li><%=album.name%></li><h4>
+                </div>
+                <div class="item">
+                  <%=link_to image_tag(album.cover, size: "200x200"), artist_path(@artist.id, :new_album => album.id)%>
+                </div>
+              </div>
+            <%end%>
+          </ul>
+        </div>
+      </section>
+    </section>
+  </div>
+</div>
