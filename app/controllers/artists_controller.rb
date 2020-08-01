@@ -5,7 +5,7 @@ class ArtistsController < ApplicationController
 
   def create
     if !find_artist_by_spotify_id(params[:spotify_id]).nil?
-      existing_artist
+      existing_artist_error
     else
       json_parsed = get_service
       matching_genres = select_genres(json_parsed["genres"])
@@ -13,16 +13,11 @@ class ArtistsController < ApplicationController
       if zip_info.nil?
         zip_error
       else
-        artist = Artist.new(name: json_parsed["name"],
-                        followers: json_parsed["followers"]["total"],
-                        genre: matching_genres,
-                        images: json_parsed["images"],
-                        popularity: json_parsed["popularity"],
-                        spotify_id: params[:spotify_id],
-                        zipcode: params[:zipcode],
-                        description: params[:description],
-                        city: zip_info[:city],
-                        state: zip_info[:state_name])
+        artist = Artist.new(name: json_parsed["name"], followers: json_parsed["followers"]["total"],
+                        genre: matching_genres, images: json_parsed["images"],
+                        popularity: json_parsed["popularity"], spotify_id: params[:spotify_id],
+                        zipcode: params[:zipcode], description: params[:description],
+                        city: zip_info[:city],state: zip_info[:state_name])
         if !find_artist_by_spotify_id(params[:spotify_id]) && artist.save
           redirect_to artist_path(artist.id)
         end
@@ -49,20 +44,19 @@ class ArtistsController < ApplicationController
     @artist = Artist.find(params[:id])
     results = AlbumSearch.new
     @albums = results.albums(@artist, current_user.token)
-    
   end
 
   private
 
-  def existing_artist
-    flash[:error] = "This Artist already exists in the database."
-    redirect_to new_artist_path
-  end
-
   def get_service
-    service = GetSpotifyArtist.new
+    service = SpotifyService.new
     json = service.find_artist(params[:spotify_id], current_user.token)
     JSON.parse(json.body, symbolize: true)
+  end
+
+  def existing_artist_error
+    flash[:error] = "This Artist already exists in the database."
+    redirect_to new_artist_path
   end
 
   def zip_error
