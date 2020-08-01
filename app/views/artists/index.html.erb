@@ -9,7 +9,7 @@
         <%= label_tag "Need a change?" %><br>
         <p1 style = "color:black"><%= text_field_tag :zipcode, session[:temp_zip] %></p1><br>
         <%= label_tag "Narrow or expand your search radius" %><br>
-        <%= select_tag(:radius, options_for_select(radius, session[:radius])) %><br>
+        <p1 style = "color:black"><%= select_tag(:radius, options_for_select(radius, session[:radius]))%><br></p1>
         <p1 style = "color:black"><%= submit_tag "Explore" %><br></p1>
       <% end %>
     </section>
@@ -42,7 +42,7 @@
         <% @artists.each do |artist| %>
             <section align="center" id=<%="artist-#{artist.id}"%>>
               <div class="index-grid-item element index-font">
-                <p style="color:white;"><%= link_to artist.name, artists_path(:update_display_artist => artist.id) %></p><br>
+                <%= link_to artist.name, artists_path(:update_display_artist => artist.id) %><br>
               </div>
             </section>
           <% end %>
