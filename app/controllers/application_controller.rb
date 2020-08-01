@@ -2,8 +2,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :find_artist_by_id
   helper_method :artists_nearby
-  helper_method :favorite_text
-
+  helper_method :favorite_status
+  
   def artists_nearby(zipcodes)
     z = zipcodes.env.response_body
     z = z.scan(/...../)
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     Artist.find_by spotify_id: spotify_id
   end
 
-  def select_genres(genres)
+  def match_genres(genres)
     if !genres.nil?
       house_genres = ["pop", "rock", "country", "jazz", "hip hop", "rap", "R&B", "punk", "electronic", "psychedelic", "indie"]
       matching_genres = []
@@ -48,7 +48,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def favorite_text
+  def favorite_status
     return @favorite_exists ? "Unfavorite" : "Favorite"
   end
 end

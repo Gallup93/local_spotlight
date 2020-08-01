@@ -8,7 +8,7 @@ class ArtistsController < ApplicationController
       existing_artist_error
     else
       json_parsed = get_service
-      matching_genres = select_genres(json_parsed["genres"])
+      matching_genres = match_genres(json_parsed["genres"])
       zip_info = ZipCodes.identify(params[:zipcode])
       if zip_info.nil?
         zip_error
@@ -33,8 +33,8 @@ class ArtistsController < ApplicationController
     else
       @artists = Artist.all
     end
-    if params[:new_artist]
-      @favorite_exists = !UserArtist.where(user_id: current_user.id, artist_id: params[:new_artist]).empty?
+    if params[:update_display_artist]
+      @favorite_exists = !UserArtist.where(user_id: current_user.id, artist_id: params[:update_display_artist]).empty?
     else
       @favorite_exists = !UserArtist.where(user_id: current_user.id, artist_id: @artists[0].id).empty?
     end
