@@ -2,7 +2,6 @@
 
 <h1 align="center" class="preference-header" style='color:white'>Currently browsing Artists within <%= session[:radius]%> of Zipcode: <%= session[:temp_zip] %></h1>
 
-
 <section align="center">
   <div class="form">
     <section class="update-temp-zip">
@@ -29,30 +28,26 @@
           <% end %>
         <h1 class="artist-header"><%= link_to display_artist.name, artist_path(display_artist.id) %></h1>
       </section>
-
     <h3 class="fav-link">
       <%= link_to favorite_status, "/favorites/#{display_artist.id}/new", method: :post, id:'favorite-link', remote: true %>
-    </h3></br>
-
-      <div class="row">
-        <div class="col-sm">
-          <section align="center">
-            <iframe  src=<%="https://open.spotify.com/embed/artist/#{display_artist.spotify_id}"%> width="500" height="580" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-          </section>
-        </div>
-
-        <div class="col-sm">
-          <section class="index_scroll_bar">
-          <% @artists.each do |artist| %>
-              <section align="center" id=<%="artist-#{artist.id}"%>>
-                <div class="index-grid-item element index-font">
-                  <%= link_to artist.name, artists_path(:update_display_artist => artist.id) %></br>
-                </div>
-              </section>
-            <% end %>
-          </section>
-        </div>
+    </h3><br>
+    <div class="row">
+      <div class="col-sm">
+        <section align="center">
+          <iframe  src=<%="https://open.spotify.com/embed/artist/#{display_artist.spotify_id}"%> width="500" height="580" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </section>
+      </div>
+      <div class="col-sm">
+        <section class="index_scroll_bar">
+        <% @artists.each do |artist| %>
+            <section align="center" id=<%="artist-#{artist.id}"%>>
+              <div class="index-grid-item element index-font">
+                <%= link_to artist.name, artists_path(:update_display_artist => artist.id) %><br>
+              </div>
+            </section>
+          <% end %>
+        </section>
       </div>
     </div>
-   </div>
+  </div>
 <% end %>

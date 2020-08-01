@@ -15,7 +15,7 @@
         <h2 style="color:white">Favorites:</h2>
         <ul>
           <% if @favorites == [] %>
-            <p style="color:white"><li>No Favorite Artists... yet</li><p>
+            <p1 style="color:white"><li>No Favorite Artists... yet</li><p1>
           <% else %>
             <% @favorites.each do |favorite| %>
             <div class= <%= "artist-#{favorite.artist_id}"%> >

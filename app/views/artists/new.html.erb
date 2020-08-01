@@ -1,14 +1,14 @@
 <div style="text-align:center;"><h1 style='color:white'> New Artist Submission Form</h1>
-<div class="form">
-  <%= form_tag "/artists", method: :post do %>
+  <div class="form">
+    <%= form_tag "/artists", method: :post do %>
 
-  <%= label_tag "Spotify ID" %><br>
-  <%= text_field_tag :spotify_id %><br>
-  <%= label_tag "Description" %><br>
-  <%= text_field_tag :description %><br>
-  <%= label_tag "Zipcode" %><br>
-  <%= text_field_tag :zipcode %><br></br>
-<p1 style="color:black;">  <%= submit_tag "Add Artist" %><br></p1>
-  <% end  %>
-</div>
+    <p><%= text_field_tag :spotify_id %></p><br>
+    <p style="color:black;"><%= label_tag "Spotify ID" %></p><br>
+    <p style="color:white;"><%= label_tag "Description" %></p><br>
+    <p style="color:black;"><%= text_field_tag :description %></p><br>
+    <p style="color:white;"><%= label_tag "Zipcode" %></p><br>
+    <p style="color:black;"><%= text_field_tag :zipcode %></p><br></br>
+   <%= submit_tag "Add Artist" %><br>
+    <% end  %>
+  </div>
 </div>
