@@ -2,6 +2,7 @@
   <div class="form">
     <%= form_tag "/artists", method: :post do %>
 
+    <p><%= text_field_tag :spotify_id %></p><br>
     <p style="color:white;"><%= label_tag "Spotify ID" %></p>
     <p style="color:black;"><%= text_field_tag :spotify_id %></p><br>
     <p style="color:white;"><%= label_tag "Description" %></p>
