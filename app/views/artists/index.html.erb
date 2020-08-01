@@ -42,7 +42,7 @@
         <% @artists.each do |artist| %>
             <section align="center" id=<%="artist-#{artist.id}"%>>
               <div class="index-grid-item element index-font">
-                <%= link_to artist.name, artists_path(:update_display_artist => artist.id) %><br>
+                <p style="color:white;"><%= link_to artist.name, artists_path(:update_display_artist => artist.id) %></p><br>
               </div>
             </section>
           <% end %>
