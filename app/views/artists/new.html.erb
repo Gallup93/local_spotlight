@@ -2,13 +2,14 @@
   <div class="form">
     <%= form_tag "/artists", method: :post do %>
 
+    <p><%= text_field_tag :spotify_id %></p><br>
     <p style="color:white;"><%= label_tag "Spotify ID" %></p>
     <p style="color:black;"><%= text_field_tag :spotify_id %></p><br>
     <p style="color:white;"><%= label_tag "Description" %></p>
     <p style="color:black;"><%= text_field_tag :description %></p><br>
     <p style="color:white;"><%= label_tag "Zipcode" %></p>
     <p style="color:black;"><%= text_field_tag :zipcode %></p><br></br>
-   <%= submit_tag "Add Artist" %><br>
+    <p style="color:black;"><%= submit_tag "Add Artist" %></p><br>
     <% end  %>
   </div>
 
