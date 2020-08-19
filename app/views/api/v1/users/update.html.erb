@@ -12,7 +12,7 @@
 
   <%= form_tag "/api/v1/users", method: :patch do %>
   <h4><%= label_tag "Zipcode" %></h4><br>
-  <%= text_field_tag :zipcode %><br><br>
-  <p><%= submit_tag "Update Preferences" %></p><br>
+  <%= text_field_tag :zipcode, style: 'color:black' %><br><br>
+  <p><%= submit_tag "Update Preferences", style: 'color:black' %></p><br>
   <% end %>
 </section>
