@@ -37,11 +37,17 @@ body {
              overflow:auto;
               border-radius: 12px;}
 
-.index_scroll_bar{height:580px;
-             overflow:auto;
-             border-radius: 8px;
-             border-color: black .5;
-             border-style: solid;
+.index_scroll_bar{
+  background-color: #4CAF50;
+  border: 1px solid green;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  width: 150px;
+  display: block;
 }
 
 
