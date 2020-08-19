@@ -50,7 +50,7 @@
           <% @artists.each do |artist| %>
               <section align="center" id=<%="artist-#{artist.id}"%>>
                 <div class="index-grid-item element index-font">
-                  <%= button_to artist.name, artists_path(:new_artist => artist.id) %></br>
+                  <%= link_to artist.name, artists_path(:new_artist => artist.id) %></br>
                 </div>
               </section>
             <% end %>
