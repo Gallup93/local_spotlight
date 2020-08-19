@@ -49,7 +49,7 @@
           <section class="index_scroll_bar">
           <% @artists.each do |artist| %>
               <section align="center" id=<%="artist-#{artist.id}"%>>
-                <div class="grid-item">
+                <div class="index-grid-item element index-font">
                   <%= link_to artist.name, artists_path(:new_artist => artist.id) %></br>
                 </div>
               </section>
