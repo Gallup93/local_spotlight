@@ -37,7 +37,7 @@ body {
              overflow:auto;
               border-radius: 12px;}
 
-.index_scroll_bar a {
+.index_scroll_bar {
           width: 12em;
           border-right: 1px solid #000;
           padding: 0 0 1em 0;
@@ -155,18 +155,6 @@ body {
   border-radius: 12px;
   border-color: black;
   text-align: center;
- }
-
- .index-grid-item{
-  background: rgba(211,211,211, .35);
-  padding: 20px;
-  border: solid;
-  border-radius: 8px;
-  border-color: black, .5;
-  text-align: center;
-  // grid-template-columns: max-content;
-  grid-template-rows: min-content;
-
  }
 
  .index-grid-item{

@@ -46,10 +46,10 @@
         </div>
 
         <div class="col-sm">
-          <section class="scroll_bar">
+          <section class="index_scroll_bar">
           <% @artists.each do |artist| %>
               <section align="center" id=<%="artist-#{artist.id}"%>>
-                <div class="index-grid-item element index-font">
+                <div class="grid-item">
                   <%= link_to artist.name, artists_path(:new_artist => artist.id) %></br>
                 </div>
               </section>
