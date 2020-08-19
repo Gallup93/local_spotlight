@@ -8,7 +8,7 @@
     <section class="update-temp-zip">
       <%= form_tag "/zipcode", method: :patch do %>
         <%= label_tag "Need a change?" %><br>
-        <%= text_field_tag :zipcode, session[:temp_zip] %><br>
+        <%= text_field_tag :zipcode, session[:temp_zip], style: 'color:black' %><br>
         <%= label_tag "Narrow or expand your search radius" %><br>
         <%= select_tag(:radius, options_for_select(radius, session[:radius])) %><br>
         <%= submit_tag "Explore" %><br>
