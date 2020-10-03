@@ -14,6 +14,12 @@ Spotify API & O-Auth
 
 ### TEAM
 [MICHAEL GALLUP](https://github.com/Gallup93)
+
+
 [CHASE GADDIS](https://github.com/cgaddis36)
+
+
 [JOSHUA TUKMAN](https://github.com/Joshua-Tukman)
+
+
 [JACK GOULD](https://github.com/jhgould)
