@@ -5,11 +5,17 @@ Local Spotlight is a web application designed to shine a spotlight on local musi
 
 ### TECH STACK
 Ruby 2.5.3
+
 Rails 5.2.4.3
+
 RSpec
+
 Travis-CI
+
 Sinatra
+
 JQuery 
+
 Spotify API & O-Auth
 
 ### TEAM
